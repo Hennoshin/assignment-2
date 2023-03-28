@@ -45,7 +45,7 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
 
-    <style>
+    {{-- <style>
         .text-primary {
             color: #f00000 !important;
         }
@@ -106,7 +106,7 @@
             background-color: #f00000 !important;
             border: 3px solid #e7e7ff !important;
         }
-    </style>
+    </style> --}}
 </head>
 
 <body>
@@ -125,7 +125,7 @@
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Selamat Datang, <br/>Booking Kost! 👋</h4>
+                        <h4 class="mb-2">Selamat Datang, <br/><a href="{{ url('/') }}">Booking Kost! 👋</a></h4>
 
                         @include('components.alert.error', ['error' => $errors])
                         {{-- <p class="mb-4">Please sign-in to your account and start the adventure</p> --}}

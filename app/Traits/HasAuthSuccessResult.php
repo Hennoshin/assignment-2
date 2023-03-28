@@ -28,7 +28,7 @@ trait HasAuthSuccessResult
     public function __successLogout()
     {
         if(request('_token')) {
-            return redirect('/login');
+            return redirect('/landing');
         }
         return ['success' => true];
     }

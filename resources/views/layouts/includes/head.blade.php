@@ -34,7 +34,7 @@
     <!-- Page CSS -->
 
     {{-- Custom CSS Already --}}
-    <style>
+    {{-- <style>
         .text-primary {
             color: #f00000 !important;
         }
@@ -95,7 +95,7 @@
             background-color: #f00000 !important;
             border: 3px solid #e7e7ff !important;
         }
-    </style>
+    </style> --}}
 
     @yield('style')
 
