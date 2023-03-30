@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Auth\LoginController;
 use App\Http\Controllers\Web\UsersController;
 use App\Helpers\MyRoute;
+use App\Http\Controllers\Web\AsramaController;
 use App\Http\Controllers\Web\Profile\ProfileController;
 use App\Http\Controllers\Web\Profile\ChangeAvatarController;
 use App\Http\Controllers\Web\Profile\ChangePasswordController;
+use App\Http\Controllers\Web\RoomTypeController;
 use App\Http\Controllers\Web\SettingController;
 
 /*
@@ -81,6 +83,22 @@ Route::namespace('App\Http\Controllers\Web')
                     Route::get('/{id}/edit', [BeritaController::class, 'edit'])->name('web.informations.edit');
                     Route::put('/{id}', [BeritaController::class, 'update'])->name('web.informations.update');
                     Route::delete('/{id}', [BeritaController::class, 'destroy'])->name('web.informations.delete');
+                });
+                Route::group(['prefix' => 'asrama'], function () {
+                    Route::get('/', [AsramaController::class, 'index'])->name('web.asrama.index');
+                    Route::get('/create', [BeritaController::class, 'create'])->name('web.asrama.create');
+                    Route::post('/', [BeritaController::class, 'store'])->name('web.asrama.store');
+                    Route::get('/{id}/edit', [BeritaController::class, 'edit'])->name('web.asrama.edit');
+                    Route::put('/{id}', [BeritaController::class, 'update'])->name('web.asrama.update');
+                    Route::delete('/{id}', [BeritaController::class, 'destroy'])->name('web.asrama.delete');
+                });
+                Route::group(['prefix' => 'room-type'], function () {
+                    Route::get('/', [RoomTypeController::class, 'index'])->name('web.room-type.index');
+                    Route::get('/create', [BeritaController::class, 'create'])->name('web.asrama.create');
+                    Route::post('/', [BeritaController::class, 'store'])->name('web.asrama.store');
+                    Route::get('/{id}/edit', [BeritaController::class, 'edit'])->name('web.asrama.edit');
+                    Route::put('/{id}', [BeritaController::class, 'update'])->name('web.asrama.update');
+                    Route::delete('/{id}', [BeritaController::class, 'destroy'])->name('web.asrama.delete');
                 });
 
 

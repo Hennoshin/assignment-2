@@ -2,27 +2,15 @@
 
 @section('content')
     @php
-        $module = 'Pengguna';
+        $module = 'Tipe Kamar';
         $fields = [
             [
-                'label' => 'Name',
-                'field' => 'name',
+                'label' => 'Nama',
+                'field' => 'title',
             ],
             [
-                'label' => 'Username',
-                'field' => 'Username',
-            ],
-            [
-                'label' => 'Email',
-                'field' => 'email',
-            ],
-            [
-                'label' => 'Roles',
-                'field' => 'roles',
-            ],
-            [
-                'label' => 'Active',
-                'field' => 'is_enabled',
+                'label' => 'Description',
+                'field' => 'description',
             ],
             [
                 'label' => 'Created At',
@@ -36,20 +24,16 @@
     @endphp
     <div class="card">
         <h5 class="card-header">{{ $module }}</h5>
-        <div class="table-responsive text-nowrap px-4 py-2" style="height: 600px;">
-            @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
-                <div class="text-end">
-                    <a target="_blank" href="{{ route('web.users.export') }}" type="button"
-                        class="btn btn-icon btn-primary">
-                        <span class="tf-icons bx bxs-file-export"></span>
-                    </a>
-                </div>
-            @endif
+        <div class="table-responsive text-wrap px-4 py-2" style="height: 500px;">
             <table class="table">
                 <thead>
                     <tr>
                         @foreach ($fields as $item)
+                        @if ($item['field'] == "description")
+                            <th width="20%">{{ $item['label'] }}</th>
+                        @else
                             <th>{{ $item['label'] }}</th>
+                        @endif
                         @endforeach
                     </tr>
                 </thead>
@@ -57,30 +41,27 @@
                     @forelse ($list as $item)
                         <tr>
                             <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                <strong>{{ $item->name ?? '-' }}</strong>
+                                <strong>{{ $item->title ?? '-' }}</strong>
                             </td>
-                            <td>{{ $item->username }}</td>
-                            <td>{{ $item->email }}</td>
-                            <td>{{ strtoupper($item->roles[0]->name) }}</td>
-                            <td>{{ $item->is_enabled == 1 ? 'Active' : 'Inactive'  }}</td>
-                            <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
+                            <td>{{ $item->description }}</td>
+                            <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item"
-                                            href="{{ route('web.users.edit', ['id' => $item->uuid]) }}"><i
+                                            href="{{ route('web.informations.edit', ['id' => $item->uuid]) }}"><i
                                                 class="bx bx-edit-alt me-1"></i>
                                             Edit</a>
                                         <form id="form_delete_{{ $item->uuid }}"
-                                            action="{{ route('web.users.delete', ['id' => $item->uuid]) }}"
+                                            action="{{ route('web.informations.delete', ['id' => $item->uuid]) }}"
                                             method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                         </form>
                                         <a class="dropdown-item" href="javascript:void(0);"
-                                            onclick="deleteAction(`{{ $item->uuid }}`, `{{ route('web.users.delete', ['id' => $item->uuid]) }}`)"><i
+                                            onclick="deleteAction(`{{ $item->uuid }}`, `{{ route('web.informations.delete', ['id' => $item->uuid]) }}`)"><i
                                                 class="bx bx-trash me-1"></i>
                                             Delete</a>
                                     </div>
@@ -102,9 +83,11 @@
             </div>
         </div>
     </div>
+    @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
     <div class="buy-now">
-        <a href="{{ route('web.users.create') }}" class="btn btn-danger btn-buy-now">Tambah {{ $module }}</a>
+        <a href="{{ route('web.informations.create') }}" class="btn btn-danger btn-buy-now">Tambah {{ $module }}</a>
     </div>
+    @endif
 @endsection
 @section('script')
     <script>

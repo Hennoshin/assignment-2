@@ -87,7 +87,7 @@
                 <!--/ User -->
             @else
             <li class="nav-item lh-1 me-3">
-                <a href="{{ url('login') }}" class="navbar-brand">Login</a>
+                <a href="{{ url('login') }}" class="navbar-brand btn btn-outline-primary">Login</a>
             </li>
             @endif
         </ul>

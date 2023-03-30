@@ -14,13 +14,13 @@ $authRole = $auth->roles[0]?->name;
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Manajemen</span></li>
     <!-- Cards -->
     <li class="menu-item">
-        <a href="cards-basic.html" class="menu-link">
+        <a href="{{ route('web.users.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-user"></i>
             <div data-i18n="Basic">Pengguna</div>
         </a>
     </li>
     <li class="menu-item">
-        <a href="cards-basic.html" class="menu-link">
+        <a href="{{ route('web.asrama.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-buildings"></i>  
             <div data-i18n="Basic">Asrama</div>
         </a>
@@ -28,20 +28,19 @@ $authRole = $auth->roles[0]?->name;
     <li class="menu-item">
         <a href="cards-basic.html" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
-            <div data-i18n="Basic">Rooms</div>
+            <div data-i18n="Basic">Kamar</div>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="{{ route('web.room-type.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-bed"></i>
+            <div data-i18n="Basic">Tipe Kamar</div>
         </a>
     </li>
     <li class="menu-item">
         <a href="cards-basic.html" class="menu-link">
             <i class="menu-icon tf-icons bx bx-wifi"></i>
             <div data-i18n="Basic">Fasilitas</div>
-        </a>
-    </li>
-    
-    <li class="menu-item">
-        <a href="cards-basic.html" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-location-plus"></i>
-            <div data-i18n="Basic">Lokasi</div>
         </a>
     </li>
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Web\Berita;
+namespace App\Http\Requests\Web\Asrama;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BeritaRequest extends FormRequest
+class AsramaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,7 @@ class BeritaRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'nullable',
-            'status' => 'numeric|min:0|max:2',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'lokasi' => 'nullable'
         ];
     }
 }
