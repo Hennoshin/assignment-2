@@ -18,7 +18,7 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div style="padding-bottom: 20px;">
                             <h3>Mau Cari Tempat Menginap?</h3>
-                            <p>Yuk! langsung dibooking di sini!</p>
+                            <p>Yuk! langsung dibooking di sini! test</p>
                         </div>
                         <!-- Layout Demo -->
                         <!-- Examples -->
