@@ -26,7 +26,7 @@ $authRole = $auth->roles[0]?->name;
         </a>
     </li>
     <li class="menu-item">
-        <a href="cards-basic.html" class="menu-link">
+        <a href="{{ route('web.room.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Basic">Kamar</div>
         </a>
@@ -38,7 +38,7 @@ $authRole = $auth->roles[0]?->name;
         </a>
     </li>
     <li class="menu-item">
-        <a href="cards-basic.html" class="menu-link">
+        <a href="{{ route('web.fasilitas.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-wifi"></i>
             <div data-i18n="Basic">Fasilitas</div>
         </a>
@@ -62,6 +62,33 @@ $authRole = $auth->roles[0]?->name;
             <div data-i18n="Analytics">Beranda</div>
         </a>
     </li>
+
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Kelola Akun</span></li>
+    <!-- Cards -->
+    <li class="menu-item">
+        <a href="#" class="menu-link">
+            <i class="menu-icon tf-icons bx bxs-face"></i>
+            <div data-i18n="Basic">Profil</div>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="#" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Basic">Kamar Saya</div>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="#" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-book-content"></i>
+            <div data-i18n="Basic">Riwayat Booking</div>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="#" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-wallet"></i>
+            <div data-i18n="Basic">Riwayat Transaksi</div>
+        </a>
+    </li>
 </ul>
 @else
 <ul class="menu-inner py-1">
@@ -71,5 +98,7 @@ $authRole = $auth->roles[0]?->name;
             <div data-i18n="Analytics">Beranda</div>
         </a>
     </li>
+
+    
 </ul>
 @endif

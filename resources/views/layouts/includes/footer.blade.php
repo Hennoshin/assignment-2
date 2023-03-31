@@ -6,7 +6,7 @@
             <script>
                 document.write(new Date().getFullYear());
             </script>
-            Yayasan Sosial dan Pendidikan Minhajus Sunnah
+            Book It
         </div>
         <div>
         </div>

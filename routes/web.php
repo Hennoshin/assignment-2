@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\Auth\LoginController;
 use App\Http\Controllers\Web\UsersController;
 use App\Helpers\MyRoute;
 use App\Http\Controllers\Web\AsramaController;
+use App\Http\Controllers\Web\FasilitasController;
 use App\Http\Controllers\Web\Profile\ProfileController;
 use App\Http\Controllers\Web\Profile\ChangeAvatarController;
 use App\Http\Controllers\Web\Profile\ChangePasswordController;
@@ -30,6 +31,7 @@ Route::get('/', function () {
         return redirect(route('web.dashboard'));
     }
 });
+
 // LANDING PAGE
 Route::get('/landing', function () {
    return view('front.landing.landing');
@@ -107,6 +109,14 @@ Route::namespace('App\Http\Controllers\Web')
                     Route::get('/{id}/edit', [RoomController::class, 'edit'])->name('web.room.edit');
                     Route::put('/{id}', [RoomController::class, 'update'])->name('web.room.update');
                     Route::delete('/{id}', [RoomController::class, 'destroy'])->name('web.room.delete');
+                });
+                Route::group(['prefix' => 'fasilitas'], function () {
+                    Route::get('/', [FasilitasController::class, 'index'])->name('web.fasilitas.index');
+                    Route::get('/create', [FasilitasController::class, 'create'])->name('web.fasilitas.create');
+                    Route::post('/', [FasilitasController::class, 'store'])->name('web.fasilitas.store');
+                    Route::get('/{id}/edit', [FasilitasController::class, 'edit'])->name('web.fasilitas.edit');
+                    Route::put('/{id}', [FasilitasController::class, 'update'])->name('web.fasilitas.update');
+                    Route::delete('/{id}', [FasilitasController::class, 'destroy'])->name('web.fasilitas.delete');
                 });
 
 
