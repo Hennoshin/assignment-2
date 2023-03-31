@@ -86,19 +86,27 @@ Route::namespace('App\Http\Controllers\Web')
                 });
                 Route::group(['prefix' => 'asrama'], function () {
                     Route::get('/', [AsramaController::class, 'index'])->name('web.asrama.index');
-                    Route::get('/create', [BeritaController::class, 'create'])->name('web.asrama.create');
-                    Route::post('/', [BeritaController::class, 'store'])->name('web.asrama.store');
-                    Route::get('/{id}/edit', [BeritaController::class, 'edit'])->name('web.asrama.edit');
-                    Route::put('/{id}', [BeritaController::class, 'update'])->name('web.asrama.update');
-                    Route::delete('/{id}', [BeritaController::class, 'destroy'])->name('web.asrama.delete');
+                    Route::get('/create', [AsramaController::class, 'create'])->name('web.asrama.create');
+                    Route::post('/', [AsramaController::class, 'store'])->name('web.asrama.store');
+                    Route::get('/{id}/edit', [AsramaController::class, 'edit'])->name('web.asrama.edit');
+                    Route::put('/{id}', [AsramaController::class, 'update'])->name('web.asrama.update');
+                    Route::delete('/{id}', [AsramaController::class, 'destroy'])->name('web.asrama.delete');
                 });
                 Route::group(['prefix' => 'room-type'], function () {
                     Route::get('/', [RoomTypeController::class, 'index'])->name('web.room-type.index');
-                    Route::get('/create', [BeritaController::class, 'create'])->name('web.asrama.create');
-                    Route::post('/', [BeritaController::class, 'store'])->name('web.asrama.store');
-                    Route::get('/{id}/edit', [BeritaController::class, 'edit'])->name('web.asrama.edit');
-                    Route::put('/{id}', [BeritaController::class, 'update'])->name('web.asrama.update');
-                    Route::delete('/{id}', [BeritaController::class, 'destroy'])->name('web.asrama.delete');
+                    Route::get('/create', [RoomTypeController::class, 'create'])->name('web.room-type.create');
+                    Route::post('/', [RoomTypeController::class, 'store'])->name('web.room-type.store');
+                    Route::get('/{id}/edit', [RoomTypeController::class, 'edit'])->name('web.room-type.edit');
+                    Route::put('/{id}', [RoomTypeController::class, 'update'])->name('web.room-type.update');
+                    Route::delete('/{id}', [RoomTypeController::class, 'destroy'])->name('web.room-type.delete');
+                });
+                Route::group(['prefix' => 'room'], function () {
+                    Route::get('/', [RoomController::class, 'index'])->name('web.room.index');
+                    Route::get('/create', [RoomController::class, 'create'])->name('web.room.create');
+                    Route::post('/', [RoomController::class, 'store'])->name('web.room.store');
+                    Route::get('/{id}/edit', [RoomController::class, 'edit'])->name('web.room.edit');
+                    Route::put('/{id}', [RoomController::class, 'update'])->name('web.room.update');
+                    Route::delete('/{id}', [RoomController::class, 'destroy'])->name('web.room.delete');
                 });
 
 

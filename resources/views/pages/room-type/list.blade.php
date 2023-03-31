@@ -51,17 +51,17 @@
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item"
-                                            href="{{ route('web.informations.edit', ['id' => $item->uuid]) }}"><i
+                                            href="{{ route('web.room-type.edit', ['id' => $item->uuid]) }}"><i
                                                 class="bx bx-edit-alt me-1"></i>
                                             Edit</a>
                                         <form id="form_delete_{{ $item->uuid }}"
-                                            action="{{ route('web.informations.delete', ['id' => $item->uuid]) }}"
+                                            action="{{ route('web.room-type.delete', ['id' => $item->uuid]) }}"
                                             method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                         </form>
                                         <a class="dropdown-item" href="javascript:void(0);"
-                                            onclick="deleteAction(`{{ $item->uuid }}`, `{{ route('web.informations.delete', ['id' => $item->uuid]) }}`)"><i
+                                            onclick="deleteAction(`{{ $item->uuid }}`, `{{ route('web.room-type.delete', ['id' => $item->uuid]) }}`)"><i
                                                 class="bx bx-trash me-1"></i>
                                             Delete</a>
                                     </div>
@@ -85,7 +85,7 @@
     </div>
     @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
     <div class="buy-now">
-        <a href="{{ route('web.informations.create') }}" class="btn btn-danger btn-buy-now">Tambah {{ $module }}</a>
+        <a href="{{ route('web.room-type.create') }}" class="btn btn-danger btn-buy-now">Tambah {{ $module }}</a>
     </div>
     @endif
 @endsection
