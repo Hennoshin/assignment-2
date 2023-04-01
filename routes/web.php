@@ -7,9 +7,11 @@ use App\Http\Controllers\Web\UsersController;
 use App\Helpers\MyRoute;
 use App\Http\Controllers\Web\AsramaController;
 use App\Http\Controllers\Web\FasilitasController;
+use App\Http\Controllers\Web\PesananController;
 use App\Http\Controllers\Web\Profile\ProfileController;
 use App\Http\Controllers\Web\Profile\ChangeAvatarController;
 use App\Http\Controllers\Web\Profile\ChangePasswordController;
+use App\Http\Controllers\Web\RoomController;
 use App\Http\Controllers\Web\RoomTypeController;
 use App\Http\Controllers\Web\SettingController;
 
@@ -44,6 +46,13 @@ Route::get('/detail', function () {
 Route::get('/list-room', function () {
     return view('front.rooms.list-room');
  });
+
+//  PESANAN 
+Route::get('/pesanan', [PesananController::class, 'index'])->name('web.pesanan.index');
+// Route::get('/pesanan', function () {
+//     return view('web.pesanan.list');
+//  });
+
 // Auth::routes();
 Route::namespace('App\Http\Controllers\Web')
     ->group(

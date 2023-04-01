@@ -107,4 +107,15 @@ class UploadService
 
         $obj->updateOrCreate([], array_merge($file_info, $extra_data));
     }
+
+    public function saveFile($obj, $extra_data = [])
+    {
+        $file_info = $this->getUploaded();
+        $obj->create(array_merge($file_info, $extra_data));
+    }
+
+    public function deleteFile($obj)
+    {
+        $obj->delete();
+    }
 }

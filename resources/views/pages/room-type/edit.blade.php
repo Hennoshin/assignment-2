@@ -10,7 +10,7 @@
     <div class="card mb-4">
         <div class="card-body">
             @include('components.alert.error-field')
-            <form method="post" action="{{ route('web.informations.update', ['id' => $row->uuid]) }}"
+            <form method="post" action="{{ route('web.room-type.update', ['id' => $row->uuid]) }}"
                 enctype="multipart/form-data">
                 @csrf
                 @method('put')

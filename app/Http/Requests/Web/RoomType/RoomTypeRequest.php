@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Web\Asrama;
+namespace App\Http\Requests\Web\RoomType;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AsramaRequest extends FormRequest
+class RoomTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,8 @@ class AsramaRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'nullable',
-            'lokasi' => 'nullable'
+            'description' => 'nullable'
+            // 'lokasi' => 'nullable'
         ];
     }
 }

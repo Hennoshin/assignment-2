@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Web\Fasilitas;
+namespace App\Http\Requests\Web\Room;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FasilitasRequest extends FormRequest
+class RoomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,9 @@ class FasilitasRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'nullable'
+            'room_type_id' => 'required',
+            'asrama_id' => 'required',
+            'fasilitas' => 'required',
         ];
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\HasBaseTable;
 use App\Traits\HasBaseOwner;
 
-class RoomType extends Model
+class Pesanan extends Model
 {
     use HasFactory, SoftDeletes, HasBaseTable, HasBaseOwner;
     
@@ -16,7 +16,7 @@ class RoomType extends Model
     const PUBLISH = 1;
     const HELD = 2;
 
-    protected $table = 'room_type';
+    protected $table = 'booking';
     public $timestamps = true;
     protected $guarded =['id', 'uuid'];
 

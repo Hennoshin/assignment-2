@@ -13,7 +13,7 @@
             <form method="post" action="{{ route('web.asrama.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
 
                         @include('components.form.input', [
                             'class_group' => 'mb-3',
@@ -35,57 +35,14 @@
                             'show' => true,
                             'disable' => false,
                         ])
-
-                        @include('components.form.select_option', [
+                        @include('components.form.text_area', [
                             'class_group' => 'mb-3',
-                            'field_name' => 'status',
-                            'label' => 'Status',
-                            'value' => old('status', null),
-                            'placeholder' => 'Status',
-                            'options' => [
-                                [
-                                    'value' => '0',
-                                    'label' => 'Draft',
-                                ],
-                                [
-                                    'value' => '1',
-                                    'label' => 'Publish',
-                                ],
-                                [
-                                    'value' => '2',
-                                    'label' => 'Held',
-                                ],
-                            ],
-                            'key_option_value' => 'value',
-                            'key_option_label' => 'label',
+                            'field_name' => 'lokasi',
+                            'label' => 'Lokasi',
+                            'value' => old('lokasi', null),
+                            'placeholder' => 'Lokasi',
                             'show' => true,
-                            'accept' => null,
                             'disable' => false,
-                        ])
-                    </div>
-                    <div class="col-md-6">
-                        @include('components.form.date', [
-                            'class_group' => 'mb-3',
-                            'field_name' => 'start_date',
-                            'label' => 'Informasi Tanggal',
-                            'value' => old('start_date'),
-                            'placeholder' => 'Informasi Tanggal',
-                            'show' => true,
-                            'required' => true,
-                            'disable' => false,
-                            'accept' => null,
-                        ])
-
-                        @include('components.form.date', [
-                            'class_group' => 'mb-3',
-                            'field_name' => 'end_date',
-                            'label' => 'Informasi Tanggal Selesai',
-                            'value' => old('end_date'),
-                            'placeholder' => 'Informasi Tanggal Selesai',
-                            'show' => true,
-                            'required' => true,
-                            'disable' => false,
-                            'accept' => null,
                         ])
                     </div>
                 </div>

@@ -7,6 +7,6 @@ class FileConst
     const USER_AVATAR_SLUG = 'USER_AVATAR';
     const USER_AVATAR_PATH = 'avatars';
 
-    const ATTACHMENT_CUTI_SLUG = 'ATTACHMENT_CUTI';
-    const ATTACHMENT_CUTI_PATH = 'attachment-cuti';
+    const IMAGE_ROOM_SLUG = 'ROOM_IMAGE';
+    const IMAGE_ROOM_PATH = 'room';
 }

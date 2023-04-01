@@ -9,12 +9,16 @@
                 'field' => 'title',
             ],
             [
-                'label' => 'Description',
-                'field' => 'description',
+                'label' => 'Tipe',
+                'field' => 'tipe',
             ],
             [
-                'label' => 'Lokasi',
-                'field' => 'lokasi',
+                'label' => 'Asrama',
+                'field' => 'asrama',
+            ],
+            [
+                'label' => 'Fasilitas',
+                'field' => 'fasilitas',
             ],
             [
                 'label' => 'Created At',
@@ -43,12 +47,22 @@
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @forelse ($list as $item)
+                    @php
+                        $fasilitas = [];
+                        if($item->RoomFasilitas != null) {
+                            foreach ($item->RoomFasilitas as $key => $value) {
+                                $fasilitas[] = $value->Fasilitas->title;
+                            }
+                        }
+                        $fas = implode(", ", $fasilitas);
+                    @endphp
                         <tr>
                             <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
                                 <strong>{{ $item->title ?? '-' }}</strong>
                             </td>
-                            <td>{{ $item->description }}</td>
-                            <td>{{ $item->lokasi }}</td>
+                            <td>{{ $item->RoomType->title }}</td>
+                            <td>{{ $item->Asrama->title }}</td>
+                            <td>{{ $fas }}</td>
                             <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                             <td>
                                 <div class="dropdown">
@@ -56,17 +70,17 @@
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item"
-                                            href="{{ route('web.informations.edit', ['id' => $item->uuid]) }}"><i
+                                            href="{{ route('web.room.edit', ['id' => $item->uuid]) }}"><i
                                                 class="bx bx-edit-alt me-1"></i>
                                             Edit</a>
                                         <form id="form_delete_{{ $item->uuid }}"
-                                            action="{{ route('web.informations.delete', ['id' => $item->uuid]) }}"
+                                            action="{{ route('web.room.delete', ['id' => $item->uuid]) }}"
                                             method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                         </form>
                                         <a class="dropdown-item" href="javascript:void(0);"
-                                            onclick="deleteAction(`{{ $item->uuid }}`, `{{ route('web.informations.delete', ['id' => $item->uuid]) }}`)"><i
+                                            onclick="deleteAction(`{{ $item->uuid }}`, `{{ route('web.room.delete', ['id' => $item->uuid]) }}`)"><i
                                                 class="bx bx-trash me-1"></i>
                                             Delete</a>
                                     </div>
@@ -90,7 +104,7 @@
     </div>
     @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
     <div class="buy-now">
-        <a href="{{ route('web.informations.create') }}" class="btn btn-danger btn-buy-now">Tambah {{ $module }}</a>
+        <a href="{{ route('web.room.create') }}" class="btn btn-danger btn-buy-now">Tambah {{ $module }}</a>
     </div>
     @endif
 @endsection

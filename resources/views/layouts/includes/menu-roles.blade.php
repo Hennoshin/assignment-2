@@ -47,7 +47,7 @@ $authRole = $auth->roles[0]?->name;
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengelolaan</span></li>
 
     <li class="menu-item">
-        <a href="cards-basic.html" class="menu-link">
+        <a href="{{ route('web.pesanan.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Basic">Pesanan</div>
         </a>

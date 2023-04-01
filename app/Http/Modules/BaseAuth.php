@@ -54,7 +54,9 @@ class BaseAuth extends Controller
             }
 
             Auth::login($this->user);
-            
+            if($this->user->hasRole(\App\Constants\RoleConst::STUDENT)) {
+                return redirect('/landing');
+            }
             return $this->__successLogin();
         }
 

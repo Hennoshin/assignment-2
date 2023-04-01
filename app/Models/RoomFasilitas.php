@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\HasBaseTable;
 use App\Traits\HasBaseOwner;
 
-class RoomType extends Model
+class RoomFasilitas extends Model
 {
     use HasFactory, SoftDeletes, HasBaseTable, HasBaseOwner;
     
@@ -16,7 +16,7 @@ class RoomType extends Model
     const PUBLISH = 1;
     const HELD = 2;
 
-    protected $table = 'room_type';
+    protected $table = 'room_fasilitas';
     public $timestamps = true;
     protected $guarded =['id', 'uuid'];
 
@@ -28,6 +28,16 @@ class RoomType extends Model
     public function updatedBy()
     {
         return $this->belongsTo(\App\Models\User::class, 'updated_by');
+    }
+
+    public function Room()
+    {
+        return $this->belongsTo(\App\Models\Room::class, 'room_id');
+    }
+
+    public function Fasilitas()
+    {
+        return $this->belongsTo(\App\Models\Fasilitas::class, 'fasilitas_id');
     }
 
 }

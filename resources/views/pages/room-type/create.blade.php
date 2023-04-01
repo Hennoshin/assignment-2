@@ -10,7 +10,7 @@
     <div class="card mb-4">
         <div class="card-body">
             @include('components.alert.error-field')
-            <form method="post" action="{{ route('web.informations.store') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('web.room-type.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
