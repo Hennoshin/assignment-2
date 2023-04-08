@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
 <!-- beautify ignore:start -->
 @include('front.include.header')
 
 <body>
-
+    
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar  layout-without-menu">
         <div class="layout-container">
@@ -32,7 +21,7 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
                             <div class="col-6">
-                                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home /</span> Double Standart Room</h4>
+                                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home /</span> {{ $row->title }}</h4>
                             </div>
                             <div class="col-6 text-end">
                                 <a href="/list-room" class="btn btn-primary">Kembali</a>
@@ -53,15 +42,17 @@
                                                       <li data-bs-target="#carouselExample-cf" data-bs-slide-to="2"></li>
                                                     </ol>
                                                     <div class="carousel-inner">
-                                                      <div class="carousel-item active">
-                                                        <img class="d-block w-100" src="../assets/img/elements/kamar.jpg" alt="First slide" />
-                                                      </div>
-                                                      <div class="carousel-item">
-                                                        <img class="d-block w-100" src="../assets/img/elements/kamar.jpg" alt="Second slide" />
-                                                      </div>
-                                                      <div class="carousel-item">
-                                                        <img class="d-block w-100" src="../assets/img/elements/kamar.jpg" alt="Third slide" />
-                                                      </div>
+                                                        @if ($row->images != null)
+                                                            @foreach ($row->images as $item)
+                                                                <div class="carousel-item active">
+                                                                <img class="d-block w-100" src="{{ url('files').'?_path='.$item->path }}" alt="First slide" />
+                                                                </div>
+                                                            @endforeach
+                                                        @else
+                                                            <div class="carousel-item">
+                                                                <img class="d-block w-100" src="../assets/img/elements/kamar.jpg" alt="Second slide" />
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                     <a class="carousel-control-prev" href="#carouselExample-cf" role="button" data-bs-slide="prev">
                                                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -88,54 +79,59 @@
                                                 </div> --}}
                                             </div>
                                             <div class="col-4">
-                                                <h3 class="card-title">Double Standart Room</h3>
+                                                <h3 class="card-title">{{ $row->title }}</h3>
                                                 <h4 class="card-title">Fasilitas</h4>
                                                 <ul class="list-unstyled mt-2">
                                                     <li>
                                                         <ul>
-                                                        <li>Free Wifi</li>
-                                                        <li>Smoking Room</li>
-                                                        <li>Wardrobe</li>
-                                                        <li>Table Study</li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                <h4 class="card-title">Fasilitas Kamar Mandi</h4>
-                                                <ul class="list-unstyled mt-2">
-                                                    <li>
-                                                        <ul>
-                                                        <li>K. Mandi Dalam</li>
-                                                        <li>Shower</li>
-                                                        <li>Kloset Duduk</li>
-                                                        
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                <h4 class="card-title">Peraturan Khusus Kamar Ini</h3>
-                                                <ul class="list-unstyled mt-2">
-                                                    <li>
-                                                        <ul>
-                                                        <li>Tipe ini bisa diisi maks. 2 orang/ kamar</li>
-                                                        <li>Tidak untuk pasutri</li>
-                                                        <li>Tidak boleh bawa anak</li>
+                                                            @forelse ($row->RoomFasilitas as $item)
+                                                            <li>{{ $item?->fasilitas?->title }}</li>
+                                                            @empty
+                                                            <li>Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini</li>
+                                                            @endforelse
                                                         </ul>
                                                     </li>
                                                 </ul>
                                                 <hr/>
-                                                <div class="row">
-                                                    <div class="col-6"> <label>Check In</label>
-                                                        <input class="form-control" type="date"></div>
-                                                    <div class="col-6"> <label>Check Out</label>
-                                                        <input class="form-control" type="date"></div>
-                                                   
-                                                        <div class="card-title mt-2 mb-0">
-                                                            <h5 class="m-0 me-2">Rp. 50.000/Hari</h5>
-                                                            <small class="text-muted">Stok Kamar Tersedia</small>
+                                                @if (auth()->user() != null)
+                                                    <div class="row">
+                                                        <div class="col-6"> <label>Check In</label>
+                                                            <input class="form-control" type="date"></div>
+                                                        <div class="col-6"> <label>Check Out</label>
+                                                            <input class="form-control" type="date"></div>
+                                                    
+                                                            <div class="card-title mt-2 mb-0">
+                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->harga) }} / {{ $row->type_harga }}</h5>
+                                                                @if ($row->Booking != null)
+                                                                    <small class="text-muted">Stok Tidak Tersedia</small>
+                                                                @else   
+                                                                    <small class="text-muted">Stok Kamar Tersedia</small>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-6">
+                                                                @if ($row->Booking == null)
+                                                                <a href="#" type="button" class="btn btn-success">Booking Sekarang</a>
+                                                                @endif
+                                                            </div>
+                                                    </div>
+                                                @else
+                                                    <div class="row">
+                                                        <div class="col-12 mb-2 mt-2"> 
+                                                            <div class="card-title mt-2 mb-0">
+                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->harga) }} / {{ $row->type_harga }}</h5>
+                                                                @if ($row->Booking != null)
+                                                                    <small class="text-muted">Stok Tidak Tersedia</small>
+                                                                @else   
+                                                                    <small class="text-muted">Stok Kamar Tersedia</small>
+                                                                @endif
+                                                            </div>
+                                                            Lakukan Login Untuk pesan kamar ini.
                                                         </div>
-                                                        <div class="col-6">
-                                                            <a href="#" type="button" class="btn btn-success">Booking Sekarang</a>
+                                                        <div class="col-12"> 
+                                                            <a href="{{ url('login') }}" class="navbar-brand btn btn-outline-primary">Login</a>
                                                         </div>
-                                                </div>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -221,18 +217,18 @@
     <!-- / Layout wrapper -->
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
+    <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-    <script src="../assets/vendor/js/menu.js"></script>
+    <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <!-- Page JS -->
 

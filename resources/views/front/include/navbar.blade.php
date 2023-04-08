@@ -58,8 +58,8 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1">
-                                        <span class="fw-semibold d-block">John Doe</span>
-                                        <small class="text-muted">Admin</small>
+                                        <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
+                                        <small class="text-muted">{{ strtoupper(auth()->user()->roles()->first()->name) }}</small>
                                     </div>
                                 </div>
                             </a>
@@ -68,18 +68,33 @@
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item"  href="{{ url('user/profile') }}">
                                 <i class="bx bx-user me-2"></i>
                                 <span class="align-middle">My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"  href="{{ url('/dashboard') }}">
+                                <i class="bx bxs-layout me-2"></i>
+                                <span class="align-middle">Dashboard</span>
                             </a>
                         </li>
                         <li>
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="auth-login-basic.html">
-                                <i class="bx bx-power-off me-2"></i>
-                                <span class="align-middle">Log Out</span>
+                            <a class="dropdown-item" href="#">
+                                <form id="logout-form-do-logout" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                                <div
+                                    onclick="event.preventDefault(); document.getElementById('logout-form-do-logout').submit();">
+                                    <i class="bx bx-power-off me-2"></i>
+                                    <span class="align-middle" href="{{ route('logout') }}">
+                                        Logout
+                                    </span>
+                                </div>
                             </a>
                         </li>
                     </ul>

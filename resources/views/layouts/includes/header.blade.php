@@ -61,8 +61,14 @@
                     </li>
                     <li>
                         <a class="dropdown-item" href="{{ url('user/profile') }}">
-                            <i class="bx bx-user me-2"></i>
+                            <i class="bx bx-home-smile me-2"></i>
                             <span class="align-middle">My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  href="{{ url('/landing') }}">
+                            <i class="bx bxs-layout me-2"></i>
+                            <span class="align-middle">Home</span>
                         </a>
                     </li>
                     <li>

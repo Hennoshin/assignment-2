@@ -26,7 +26,8 @@ class Room extends Model
         'Asrama',
         'RoomFasilitas',
         'image',
-        'images'
+        'images',
+        'Booking'
     ];
 
     public function image(){
@@ -60,6 +61,11 @@ class Room extends Model
     public function RoomFasilitas() 
     {
         return $this->hasMany(\App\Models\RoomFasilitas::class, 'room_id');
+    }
+
+    public function Booking()
+    {
+        return $this->hasOne(\App\Models\Booking::class, 'room_id');
     }
 
 }

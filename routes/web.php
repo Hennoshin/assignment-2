@@ -36,14 +36,8 @@ Route::get('/', function () {
 
 // LANDING PAGE
 Route::get('/landing', [App\Http\Controllers\LandingPageController::class, 'landingPages'])->name('web.homepage.front');
-// Route::get('/landing', function () {
-//    return view('front.landing.landing');
-// });
+Route::get('/room/detail/{id}', [App\Http\Controllers\LandingPageController::class, 'roomDetail'])->name('web.homepage.room-detail.front');
 
-//  ROOMS
-Route::get('/detail', function () {
-    return view('front.rooms.detail-room');
- });
 Route::get('/list-room', function () {
     return view('front.rooms.list-room');
  });

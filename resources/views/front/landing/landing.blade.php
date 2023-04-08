@@ -38,7 +38,7 @@
                                         <p class="card-text">
                                             {{ number_format($item->harga) }}
                                         </p>
-                                        <a href="javascript:void(0)" class="btn btn-outline-primary">Go somewhere</a>
+                                        <a href="{{ route('web.homepage.room-detail.front', ['id' => $item->uuid]) }}" class="btn btn-outline-primary">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
