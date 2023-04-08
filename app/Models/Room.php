@@ -25,6 +25,8 @@ class Room extends Model
         'RoomType',
         'Asrama',
         'RoomFasilitas',
+        'image',
+        'images'
     ];
 
     public function image(){
@@ -32,7 +34,7 @@ class Room extends Model
     }
 
     public function images(){
-        return $this->morphToMany(FileinfoPivot::class, 'fileable')->where('slug', FileConst::IMAGE_ROOM_SLUG);
+        return $this->morphMany(FileinfoPivot::class, 'fileable')->where('slug', FileConst::IMAGE_ROOM_SLUG);
     }
 
     public function createdBy()

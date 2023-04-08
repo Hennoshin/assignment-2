@@ -35,7 +35,7 @@
                             'type' => 'text',
                             'show' => true,
                             'disable' => false,
-                            'multiple' => true
+                            'multiple' => true,
                         ])
 
                         @php
@@ -80,6 +80,40 @@
                             'options' => $fasilitas,
                             'key_option_value' => 'uuid',
                             'key_option_label' => 'title',
+                            'show' => true,
+                            'accept' => null,
+                            'disable' => false,
+                        ])
+
+                        @include('components.form.number', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'harga',
+                            'label' => 'Harga',
+                            'value' => old('harga'),
+                            'placeholder' => 'Harga',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                            'min' => 0,
+                            'max' => 99999999999,
+                            'accept' => 'disable-minus'
+                        ])
+
+                        @include('components.form.select_option', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'type_harga',
+                            'label' => 'Tipe Harga',
+                            'value' => old('type_harga', null),
+                            'placeholder' => 'Tipe Harga',
+                            'options' => [
+                                ['value' => 'Harian', 'label' => 'Harian'],
+                                ['value' => 'Mingguan', 'label' => 'Mingguan'],
+                                ['value' => 'Bulanan', 'label' => 'Bulanan'],
+                                ['value' => 'Semester', 'label' => 'Semester'],
+                                ['value' => 'Tahunan', 'label' => 'Tahunan'],
+                            ],
+                            'key_option_value' => 'value',
+                            'key_option_label' => 'label',
                             'show' => true,
                             'accept' => null,
                             'disable' => false,

@@ -10,8 +10,7 @@
     <div class="card mb-4">
         <div class="card-body">
             @include('components.alert.error-field')
-            <form method="post" action="{{ route('web.room.update', ['id' => $row->uuid]) }}"
-                enctype="multipart/form-data">
+            <form method="post" action="{{ route('web.room.update', ['id' => $row->uuid]) }}" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="row">
@@ -37,7 +36,7 @@
                             'type' => 'text',
                             'show' => true,
                             'disable' => false,
-                            'multiple' => true
+                            'multiple' => true,
                         ])
 
                         @php
@@ -88,6 +87,40 @@
                             'options' => $fasilitas,
                             'key_option_value' => 'uuid',
                             'key_option_label' => 'title',
+                            'show' => true,
+                            'accept' => null,
+                            'disable' => false,
+                        ])
+
+                        @include('components.form.number', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'harga',
+                            'label' => 'Harga',
+                            'value' => old('harga', $row->harga),
+                            'placeholder' => 'Harga',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                            'min' => 0,
+                            'max' => 99999999999,
+                            'accept' => 'disable-minus',
+                        ])
+
+                        @include('components.form.select_option', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'type_harga',
+                            'label' => 'Tipe Harga',
+                            'value' => old('type_harga', $row->type_harga),
+                            'placeholder' => 'Tipe Harga',
+                            'options' => [
+                                ['value' => 'Harian', 'label' => 'Harian'],
+                                ['value' => 'Mingguan', 'label' => 'Mingguan'],
+                                ['value' => 'Bulanan', 'label' => 'Bulanan'],
+                                ['value' => 'Semester', 'label' => 'Semester'],
+                                ['value' => 'Tahunan', 'label' => 'Tahunan'],
+                            ],
+                            'key_option_value' => 'value',
+                            'key_option_label' => 'label',
                             'show' => true,
                             'accept' => null,
                             'disable' => false,
