@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UsersSeeder::class,
             SettingSeeder::class,
+            AsramaSeeder::class,
         ]);
     }
 }
