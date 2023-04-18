@@ -94,12 +94,16 @@
                                                 </ul>
                                                 <hr/>
                                                 @if (auth()->user() != null)
+                                                <form method="post" action="{{ route('web.homepage.room-booking.front') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="room_id" value="{{ $row->uuid }}">
                                                     <div class="row">
-                                                        <div class="col-6"> <label>Check In</label>
-                                                            <input class="form-control" type="date"></div>
-                                                        <div class="col-6"> <label>Check Out</label>
-                                                            <input class="form-control" type="date"></div>
-                                                    
+                                                            <div class="col-6"> <label>Check In</label>
+                                                                <input class="form-control" type="date" name="start_date">
+                                                            </div>
+                                                            <div class="col-6"> <label>Check Out</label>
+                                                                <input class="form-control" type="date" name="end_date">
+                                                            </div>
                                                             <div class="card-title mt-2 mb-0">
                                                                 <h5 class="m-0 me-2">Rp. {{ number_format($row->harga) }} / {{ $row->type_harga }}</h5>
                                                                 @if ($row->Booking != null)
@@ -110,10 +114,15 @@
                                                             </div>
                                                             <div class="col-6">
                                                                 @if ($row->Booking == null)
-                                                                <a href="#" type="button" class="btn btn-success">Booking Sekarang</a>
+                                                                <button type="submit" class="btn btn-success">Booking Sekarang</button>
                                                                 @endif
                                                             </div>
-                                                    </div>
+                                                        </div>
+                                                    </form>
+                                                    {{-- {{ dd($row->Booking, auth()->user()->id); }} --}}
+                                                    @if (auth()->user()->id == $row?->Booking?->user_id)
+                                                        <small class="text-info">{{ $row->Booking->status == 0 ? "Lakukan Pembayaran Anda Sekarang" : "Pesanan Anda Sedang diproses oleh Admin" }}</small>
+                                                    @endif
                                                 @else
                                                     <div class="row">
                                                         <div class="col-12 mb-2 mt-2"> 
@@ -155,7 +164,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-3 mb-3">
+                            {{-- <div class="col-md-6 col-lg-3 mb-3">
                                 <div class="card h-100">
                                     <img class="card-img-top" src="../assets/img/elements/kamar.jpg"
                                         alt="Card image cap" />
@@ -196,7 +205,7 @@
                                         <a href="javascript:void(0)" class="btn btn-outline-primary">Go somewhere</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                             <!--/ Order Statistics -->
                         <!--/ Layout Demo -->

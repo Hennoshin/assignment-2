@@ -9,4 +9,7 @@ class FileConst
 
     const IMAGE_ROOM_SLUG = 'ROOM_IMAGE';
     const IMAGE_ROOM_PATH = 'room';
+
+    const PAYMENT_SLUG = 'PAYMENT';
+    const PAYMENT_PATH = 'payment';
 }

@@ -78,7 +78,7 @@ $authRole = $auth->roles[0]?->name;
         </a>
     </li>
     <li class="menu-item">
-        <a href="#" class="menu-link">
+        <a href="{{ route('web.pesanan.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-book-content"></i>
             <div data-i18n="Basic">Riwayat Booking</div>
         </a>

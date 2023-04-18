@@ -27,18 +27,27 @@
                             <div class="col-md-6 col-lg-3 mb-3">
                                 <div class="card h-100">
                                     @if($item->image == null)
-                                    <img class="card-img-top" src="../assets/img/elements/kamar.jpg"
+                                    <img class="card-img-top" style="height: 203px;" src="../assets/img/elements/kamar.jpg"
                                         alt="Card image cap" />
                                     @else
-                                    <img class="card-img-top" src="{{ url('files').'?_path='.$item->image->path }}"
+                                    <img class="card-img-top" style="height: 203px;" src="{{ url('files').'?_path='.$item->image->path }}"
                                         alt="Card image cap" />
                                     @endif
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $item->title }}</h5>
-                                        <p class="card-text">
-                                            {{ number_format($item->harga) }}
+                                        <p class="card-text"><small>
+
+                                            @forelse ($item->RoomFasilitas as $items)
+                                            {{ $items?->fasilitas?->title }},
+                                            @empty
+                                            Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini
+                                            @endforelse
+                                        </small>
                                         </p>
-                                        <a href="{{ route('web.homepage.room-detail.front', ['id' => $item->uuid]) }}" class="btn btn-outline-primary">Go somewhere</a>
+                                        <p class="card-text">
+                                            {{ number_format($item->harga) }} / {{ $item->type_harga }}
+                                        </p>
+                                        <a href="{{ route('web.homepage.room-detail.front', ['id' => $item->uuid]) }}" class="btn btn-outline-primary">Lebih Detail</a>
                                     </div>
                                 </div>
                             </div>
@@ -50,9 +59,8 @@
                                     <div class="d-flex align-items-end row">
                                         <div class="col-sm-7">
                                             <div class="card-body">
-                                                <h5 class="card-title text-primary">Congratulations  🎉</h5>
-                                                <p class="mb-4">Welcome, Don't forget to be absent today, so that your points increase.
-                                                    Immediately claim your point to get another attractive prize opportunity</p>
+                                                <h5 class="card-title text-primary">Asrama dikelola Book It, Terjamin Nyaman  🎉</h5>
+                                                <p class="mb-4">Booking kamar untuk Mahasiswa/i berada dalam genggaman anda.</p>
                                             </div>
                                         </div>
                                         <div class="col-sm-5 text-center text-sm-left">
@@ -80,13 +88,11 @@
                                         </div>
                                         <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
+                                            <h5 class="card-title">Asrama A</h5>
                                             <p class="card-text">
-                                            This is a wider card with supporting text below as a natural lead-in to additional content. This content
-                                            is a
-                                            little bit longer.
+                                            Merupakan Asrama yang terletak di sekitar kawasan kampus Universitas Riau, yang memiliki fasilitas yang nyaman untuk penginapan untuk Mahasiswa/i Universitas Riau.
                                             </p>
-                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                                         </div>
                                         </div>
                                     </div>
@@ -97,13 +103,11 @@
                                     <div class="row g-0">
                                         <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
+                                            <h5 class="card-title">Asrama B</h5>
                                             <p class="card-text">
-                                            This is a wider card with supporting text below as a natural lead-in to additional content. This content
-                                            is a
-                                            little bit longer.
+                                                Merupakan Asrama yang terletak di sekitar kawasan kampus Universitas Riau, yang memiliki fasilitas yang nyaman untuk penginapan untuk Mahasiswa/i Universitas Riau.
                                             </p>
-                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                                         </div>
                                         </div>
                                         <div class="col-md-4">

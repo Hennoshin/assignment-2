@@ -37,13 +37,14 @@ Route::get('/', function () {
 // LANDING PAGE
 Route::get('/landing', [App\Http\Controllers\LandingPageController::class, 'landingPages'])->name('web.homepage.front');
 Route::get('/room/detail/{id}', [App\Http\Controllers\LandingPageController::class, 'roomDetail'])->name('web.homepage.room-detail.front');
+# booking ROOM
+Route::post('/room/booking', [App\Http\Controllers\LandingPageController::class, 'RoomBooking'])->name('web.homepage.room-booking.front');
 
 Route::get('/list-room', function () {
     return view('front.rooms.list-room');
  });
 
 //  PESANAN 
-Route::get('/pesanan', [PesananController::class, 'index'])->name('web.pesanan.index');
 // Route::get('/pesanan', function () {
 //     return view('web.pesanan.list');
 //  });
@@ -123,7 +124,11 @@ Route::namespace('App\Http\Controllers\Web')
                     Route::delete('/{id}', [FasilitasController::class, 'destroy'])->name('web.fasilitas.delete');
                 });
 
-
+                Route::get('/pesanan', [PesananController::class, 'index'])->name('web.pesanan.index');
+                Route::get('/pesanan/{id}/edit', [PesananController::class, 'edit'])->name('web.pesanan.edit');
+                Route::put('/pesanan/{id}', [PesananController::class, 'update'])->name('web.pesanan.update');
+                Route::get('/pesanan/{id}/verifikasi', [PesananController::class, 'verifikasi'])->name('web.pesanan.verifikasi');
+                Route::get('/pesanan/{id}/cancel', [PesananController::class, 'rejected'])->name('web.pesanan.canceled');
 
             });
         });

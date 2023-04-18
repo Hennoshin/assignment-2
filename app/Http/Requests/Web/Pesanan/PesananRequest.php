@@ -24,9 +24,8 @@ class PesananRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'nullable',
-            'lokasi' => 'nullable'
+            'ammount' => 'required',
+            'image' => 'required',
         ];
     }
 }

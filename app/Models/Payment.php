@@ -9,16 +9,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\HasBaseTable;
 use App\Traits\HasBaseOwner;
 
-class Booking extends Model
+class Payment extends Model
 {
     use HasFactory, SoftDeletes, HasBaseTable, HasBaseOwner;
     
-    const BOOKING = 0;
-    const PAYMENT = 1;
-    const VERIFIED = 2;
-    const FAILED = 3;
+    const UNPAID = 0;
+    const PAID = 1;
 
-    protected $table = 'booking';
+    protected $table = 'payment';
     public $timestamps = true;
     protected $guarded =['id', 'uuid'];
 
@@ -32,23 +30,13 @@ class Booking extends Model
         return $this->belongsTo(\App\Models\User::class, 'updated_by');
     }
 
-    public function image(){
-        return $this->morphOne(FileinfoPivot::class, 'fileable')->where('slug', FileConst::PAYMENT_SLUG);
+    public function Booking() {
+        return $this->belongsTo(\App\Models\Booking::class, 'booking_id');
     }
 
-    public function Payment()
+    public function ApproveBy()
     {
-        return $this->hasOne(\App\Models\Payment::class, 'booking_id');
-    }
-
-    public function User()
-    {
-        return $this->belongsTo(\App\Models\User::class, 'user_id');
-    }
-
-    public function Room()
-    {
-        return $this->belongsTo(\App\Models\Room::class, 'room_id');
+        return $this->belongsTo(\App\Models\User::class, 'approve_by');
     }
 
 }
