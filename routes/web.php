@@ -43,6 +43,12 @@ Route::post('/room/booking', [App\Http\Controllers\LandingPageController::class,
 Route::get('/list-room', function () {
     return view('front.rooms.list-room');
  });
+Route::get('/pusat-bantuan', function () {
+    return view('front.landing.bantuan');
+ });
+Route::get('/syarat-dan-ketentuan', function () {
+    return view('front.landing.syarat');
+ });
 
 //  PESANAN 
 // Route::get('/pesanan', function () {
