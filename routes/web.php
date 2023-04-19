@@ -36,13 +36,14 @@ Route::get('/', function () {
 
 // LANDING PAGE
 Route::get('/landing', [App\Http\Controllers\LandingPageController::class, 'landingPages'])->name('web.homepage.front');
+Route::get('/list-room', [App\Http\Controllers\ListRoomController::class, 'listRoom'])->name('web.homepage.list-room.front');
 Route::get('/room/detail/{id}', [App\Http\Controllers\LandingPageController::class, 'roomDetail'])->name('web.homepage.room-detail.front');
 # booking ROOM
 Route::post('/room/booking', [App\Http\Controllers\LandingPageController::class, 'RoomBooking'])->name('web.homepage.room-booking.front');
 
-Route::get('/list-room', function () {
-    return view('front.rooms.list-room');
- });
+// Route::get('/list-room', function () {
+//     return view('front.rooms.list-room');
+//  });
 Route::get('/pusat-bantuan', function () {
     return view('front.landing.bantuan');
  });

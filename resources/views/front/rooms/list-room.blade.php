@@ -17,7 +17,7 @@
 
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h5 class="pb-1 mt-3 mb-3">List Room Asrama</h5>
+                        <h5 class="pb-1 mt-3 mb-3">List Room</h5>
                         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="javascript:void(0)">Navbar</a>
@@ -67,6 +67,7 @@
                         </nav>
                         <!-- Layout Demo -->
                         <div class="row mb-2">
+                            @foreach ($room as $item)
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -77,7 +78,7 @@
                                             </div>
                                             <div class="col">
                                                 <div class="text-light small fw-semibold">Stok Kamar Tersedia</div>
-                                                <h3 class="card-title">Double Standart Room</h2>
+                                                <h3 class="card-title">{{ $item->title }}</h2>
                                                 <h5 class="card-title">Fasilitas</h5>
                                                 <small>
 
@@ -99,6 +100,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
 
                         <!--/ Order Statistics -->
