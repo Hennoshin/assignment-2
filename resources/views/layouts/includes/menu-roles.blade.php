@@ -66,7 +66,7 @@ $authRole = $auth->roles[0]?->name;
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Kelola Akun</span></li>
     <!-- Cards -->
     <li class="menu-item">
-        <a href="#" class="menu-link">
+        <a href="{{ route('web.profile.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bxs-face"></i>
             <div data-i18n="Basic">Profil</div>
         </a>

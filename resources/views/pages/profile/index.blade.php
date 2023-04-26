@@ -98,6 +98,7 @@
                                 Logout
                             </span>
                         </div>
+                        <a href="#" class="btn btn-primary">Edit</a>
                     </div>
                 </div>
 
