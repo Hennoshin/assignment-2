@@ -49,9 +49,13 @@ class PesananController extends BaseWebCrud
         $this->row->update(['status' => 1]);
         
         $this->row->Payment()->create(
-            ['ammount' => $this->requestData->input('ammount'), 'status' => 1]
+            ['ammount' => $this->toInt($this->requestData->input('ammount')), 'status' => 1]
         );
         $this->uploaded->saveFile($this->row->image(), ['slug' =>  FileConst::PAYMENT_SLUG]);
+    }
+    function toInt($str)
+    {
+        return (int)preg_replace("/\..+$/i", "", preg_replace("/[^0-9\.]/i", "", $str));
     }
     public function __prepareDataStore($data) 
     {

@@ -107,6 +107,7 @@
                                     <th>Room</th>
                                     <th>Type</th>
                                     <th>Asrama</th>
+                                    <th>Dibayarkan</th>
                                     <th>Tanggal Payment</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
@@ -121,6 +122,7 @@
                                     <td>{{ $item->Room->title }}</td>
                                     <td>{{ $item->Room->RoomType->title }}</td>
                                     <td>{{ $item->Room->Asrama->title }}</td>
+                                    <td>{{ number_format($item->Payment->ammount, 2, '.', ',') }}</td>
                                     <td>{{ date('d-m-Y H:i', strtotime($item->Payment->created_at)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->start_date)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->end_date)) }}</td>

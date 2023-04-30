@@ -45,7 +45,7 @@
                                         </small>
                                         </p>
                                         <p class="card-text">
-                                            {{ number_format($item->harga) }} / {{ $item->type_harga }}
+                                            {{ number_format($item->perbulan) }} / {{ 'Per Bulan' }}
                                         </p>
                                         <a href="{{ route('web.homepage.room-detail.front', ['id' => $item->uuid]) }}" class="btn btn-outline-primary">Lebih Detail</a>
                                     </div>

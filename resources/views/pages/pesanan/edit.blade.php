@@ -39,20 +39,35 @@
                             'disabled' => true,
                         ])
 
-                        @include('components.form.number', [
+                        @include('components.form.input', [
                             'class_group' => 'mb-3',
-                            'field_name' => 'ammount',
-                            'label' => 'Total Dibayarkan',
-                            'value' => old('ammount', 0),
+                            'field_name' => 'harga_kamar',
+                            'label' => 'Yang Harus Dibayarkan',
+                            'value' => old(
+                                'harga_kamar',
+                                number_format($row->Room[$row['type_harga']], 2, '.', ',')),
                             'placeholder' => 'Total Dibayarkan',
                             'type' => 'text',
                             'show' => true,
-                            'disabled' => false,
+                            'disabled' => true,
                             'min' => 0,
                             'max' => 9999999999,
                             'accept' => 'disable-minus',
                         ])
 
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'type_harga',
+                            'label' => 'Yang Harus Dibayarkan',
+                            'value' => old('type_harga', strtoupper($row->type_harga)),
+                            'placeholder' => 'Yang Harus Dibayarkan',
+                            'type' => 'text',
+                            'show' => true,
+                            'disabled' => true,
+                            'min' => 0,
+                            'max' => 9999999999,
+                            'accept' => 'disable-minus',
+                        ])
 
                     </div>
                     <div class="col-md-6">
@@ -88,6 +103,21 @@
                             'show' => true,
                             'disable' => false,
                             'multiple' => false,
+                        ])
+
+                        @include('components.form.number', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'ammount',
+                            'label' => 'Total Dibayarkan',
+                            'value' => old('ammount', 0),
+                            'placeholder' => 'Total Dibayarkan',
+                            'type' => 'text',
+                            'show' => true,
+                            'disabled' => false,
+                            'min' => 0,
+                            'max' => 9999999999,
+                            'accept' => 'disable-minus',
+                            'format' => 'currency'
                         ])
                     </div>
                 </div>

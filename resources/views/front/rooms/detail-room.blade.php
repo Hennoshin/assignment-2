@@ -98,14 +98,26 @@
                                                 @csrf
                                                 <input type="hidden" name="room_id" value="{{ $row->uuid }}">
                                                     <div class="row">
-                                                            <div class="col-6"> <label>Check In</label>
+                                                            <div class="col-12"> <label>Check In</label>
                                                                 <input class="form-control" type="date" name="start_date">
                                                             </div>
-                                                            <div class="col-6"> <label>Check Out</label>
-                                                                <input class="form-control" type="date" name="end_date">
+                                                            <div class="col-12">
+                                                                <div class="mb-3">
+                                                                    <label for="defaultSelect" class="form-label">Jenis Sewa</label>
+                                                                    <select id="defaultSelect" name="type_harga" class="form-select">
+                                                                      <option value="perhari">Harian</option>
+                                                                      <option value="perbulan">Bulanan</option>
+                                                                      <option value="persemester">Semester</option>
+                                                                    </select>
+                                                                  </div>
                                                             </div>
+                                                            {{-- <div class="col-6"> <label>Check Out</label>
+                                                                <input class="form-control" type="date" name="end_date">
+                                                            </div> --}}
                                                             <div class="card-title mt-2 mb-0">
-                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->harga) }} / {{ $row->type_harga }}</h5>
+                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->perhari) }} / {{ 'Per Hari' }}</h5>
+                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->perbulan) }} / {{ 'Per Bulan' }}</h5>
+                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->persemester) }} / {{ 'Per Semester' }}</h5>
                                                                 @if ($row->Booking != null)
                                                                     <small class="text-muted">Stok Tidak Tersedia</small>
                                                                 @else   

@@ -28,7 +28,7 @@ var =   class_group,
         </script>
     @endsection
 @endif
-@if ($format == 'currency')
+@if (isset($format) && $format == 'currency')
     @section('script')
         @parent
         <script>
