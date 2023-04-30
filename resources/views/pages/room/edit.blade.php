@@ -94,19 +94,49 @@
 
                         @include('components.form.number', [
                             'class_group' => 'mb-3',
-                            'field_name' => 'harga',
-                            'label' => 'Harga',
-                            'value' => old('harga', $row->harga),
-                            'placeholder' => 'Harga',
+                            'field_name' => 'perhari',
+                            'label' => 'Harga Per Hari',
+                            'value' => old('perhari', number_format($row->perhari, 2, '.', ',')),
+                            'placeholder' => 'Harga Perhari',
                             'type' => 'text',
                             'show' => true,
                             'disable' => false,
                             'min' => 0,
                             'max' => 99999999999,
                             'accept' => 'disable-minus',
+                            'format' => 'currency'
                         ])
 
-                        @include('components.form.select_option', [
+                        @include('components.form.number', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'perbulan',
+                            'label' => 'Harga Per Bulan',
+                            'value' => old('perbulan', number_format($row->perbulan, 2, '.', ',')),
+                            'placeholder' => 'Harga Per Bulan',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                            'min' => 0,
+                            'max' => 99999999999,
+                            'accept' => 'disable-minus',
+                            'format' => 'currency'
+                        ])
+
+                        @include('components.form.number', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'persemester',
+                            'label' => 'Harga Per Semester',
+                            'value' => old('persemester', number_format($row->persemester, 2, '.', ',')),
+                            'placeholder' => 'Harga Per Semester',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                            'min' => 0,
+                            'max' => 99999999999,
+                            'accept' => 'disable-minus',
+                            'format' => 'currency'
+                        ])
+                        {{-- @include('components.form.select_option', [
                             'class_group' => 'mb-3',
                             'field_name' => 'type_harga',
                             'label' => 'Tipe Harga',
@@ -124,7 +154,7 @@
                             'show' => true,
                             'accept' => null,
                             'disable' => false,
-                        ])
+                        ]) --}}
                     </div>
                 </div>
                 <div class="form-group">

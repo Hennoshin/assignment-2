@@ -28,8 +28,9 @@ class RoomRequest extends FormRequest
             'room_type_id' => 'required',
             'asrama_id' => 'required',
             'fasilitas' => 'required',
-            'harga' => 'required',
-            'type_harga' => 'required',
+            'perhari' => 'required',
+            'perbulan' => 'required',
+            'persemester' => 'required',
             'images' => 'required'
         ];
     }

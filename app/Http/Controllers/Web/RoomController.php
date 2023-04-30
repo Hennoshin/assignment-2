@@ -28,10 +28,18 @@ class RoomController extends BaseWebCrud
         return $query;
     }
 
+    function toInt($str)
+    {
+        return (int)preg_replace("/\..+$/i", "", preg_replace("/[^0-9\.]/i", "", $str));
+    }
+
     public function __prepareDataStore($data) 
     {
         $data['room_type_id'] = RoomType::getId($data['room_type_id']);
         $data['asrama_id'] = Asramas::getId($data['asrama_id']);
+        $data['perhari'] = $this->toInt($data['perhari']);
+        $data['perbulan'] = $this->toInt($data['perbulan']);
+        $data['persemester'] = $this->toInt($data['persemester']);
         return $data;
     }
     public function __successStore()
