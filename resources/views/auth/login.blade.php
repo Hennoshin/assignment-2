@@ -125,7 +125,7 @@
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Selamat Datang, <br/><a href="{{ url('/') }}">Booking Kost! 👋</a></h4>
+                        <h4 class="mb-2">Selamat Datang, <br/><a href="{{ url('/') }}">Book It! 👋</a></h4>
 
                         @include('components.alert.error', ['error' => $errors])
                         {{-- <p class="mb-4">Please sign-in to your account and start the adventure</p> --}}

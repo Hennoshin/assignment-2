@@ -6,8 +6,10 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <i class="bx bxl-bing mb-2"></i>
-                <span class="app-brand-text demo menu-text fw-bolder ms-2">BOOK IT</span>
+                <a href="{{ url('/landing') }}">
+                    <i class="bx bxl-bing mb-2"></i>
+                    <span class="app-brand-text demo menu-text fw-bolder ms-2">BOOK IT</span>
+                </a>
             </div>
         </div>
         <!-- /Search -->
@@ -33,11 +35,11 @@
             </li>
 
             <li class="nav-item lh-1 me-3">
-                <a href="#" class="navbar-brand">Pusat Bantuan</a>
+                <a href="{{ url('/pusat-bantuan') }}" class="navbar-brand">Pusat Bantuan</a>
             </li>
 
             <li class="nav-item lh-1 me-3">
-                <a href="#" class="navbar-brand">Syarat dan Ketentuan</a>
+                <a href="{{ url('/syarat-dan-ketentuan') }}" class="navbar-brand">Syarat dan Ketentuan</a>
             </li>
             @if (auth()->user() != null)
                 <!-- User -->

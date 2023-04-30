@@ -17,10 +17,10 @@
 
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h5 class="pb-1 mt-3 mb-3">List Room Asrama</h5>
+                        <h5 class="pb-1 mt-3 mb-3">List Room</h5>
                         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
                             <div class="container-fluid">
-                                <a class="navbar-brand" href="javascript:void(0)">Navbar</a>
+                                <a class="navbar-brand" href="javascript:void(0)"><i class='bx bx-filter-alt'></i> Filter</a>
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                     aria-expanded="false" aria-label="Toggle navigation">
@@ -39,17 +39,12 @@
                                             <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                                 id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                                 aria-expanded="false">
-                                                Dropdown
+                                                Tipe Kamar
                                             </a>
                                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
-                                                <li><a class="dropdown-item" href="javascript:void(0)">Another
-                                                        action</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="javascript:void(0)">Something else
-                                                        here</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0)">Standart</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0)">Single</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0)">Double</a></li>
                                             </ul>
                                         </li>
                                         <li class="nav-item">
@@ -67,38 +62,47 @@
                         </nav>
                         <!-- Layout Demo -->
                         <div class="row mb-2">
+                            @foreach ($room as $item)
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-3">
-                                                <img class="card-img-top" style="width: 100%"
-                                                    src="../assets/img/elements/kamar.jpg" />
+                                                @if($item->image == null)
+                                                <img class="card-img-top" style="width: 100%" src="../assets/img/elements/kamar.jpg"
+                                                    alt="Card image cap" />
+                                                @else
+                                                <img class="card-img-top" style="width: 100%" src="{{ url('files').'?_path='.$item->image->path }}"
+                                                    alt="Card image cap" />
+                                                @endif
                                             </div>
                                             <div class="col">
                                                 <div class="text-light small fw-semibold">Stok Kamar Tersedia</div>
-                                                <h3 class="card-title">Double Standart Room</h2>
+                                                <h3 class="card-title">{{ $item->title }}</h2>
                                                 <h5 class="card-title">Fasilitas</h5>
                                                 <small>
-
                                                     <ul class="list-unstyled mt-2">
-                                                        <li>
-                                                            <ul>
-                                                            <li>Free Wifi</li>
-                                                            <li>Smoking Room</li>
-                                                            </ul>
-                                                        </li>
+                                                    @forelse ($item->RoomFasilitas as $items)
+                                                    <li>
+                                                        <ul>
+                                                            <li>{{ $items?->fasilitas?->title }}</li>
+                                                            @empty
+                                                                Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini
+                                                            @endforelse
+                                                        </ul>
+                                                    </li>
                                                     </ul>
                                                 </small>
                                                     <div class="card-title mb-0">
-                                                        <h5 class="m-2 me-2">Rp. 50.000/Hari</h5>
-                                                        <a href="/detail" class="btn btn-primary">Lihat Lebih Detail</a>
+                                                        <h5 class="m-2 me-2">Rp. {{ number_format($item->harga) }} / {{ $item->type_harga }}</h5>
+                                                        <a href="{{ route('web.homepage.room-detail.front', ['id' => $item->uuid]) }}" class="btn btn-primary">Lihat Lebih Detail</a>
                                                     </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
 
                         <!--/ Order Statistics -->
