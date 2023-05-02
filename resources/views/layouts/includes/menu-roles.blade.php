@@ -83,12 +83,12 @@ $authRole = $auth->roles[0]?->name;
             <div data-i18n="Basic">Riwayat Booking</div>
         </a>
     </li>
-    <li class="menu-item">
+    {{-- <li class="menu-item">
         <a href="#" class="menu-link">
             <i class="menu-icon tf-icons bx bx-wallet"></i>
             <div data-i18n="Basic">Riwayat Transaksi</div>
         </a>
-    </li>
+    </li> --}}
 </ul>
 @else
 <ul class="menu-inner py-1">

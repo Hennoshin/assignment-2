@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Modules\BaseWebCrud;
+use App\Models\Asramas;
 use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use App\Models\Attendence;
+use App\Models\Booking;
 use App\Models\RewardHistory;
+use App\Models\Room;
 
 class HomeController extends BaseWebCrud
 {
@@ -20,24 +23,16 @@ class HomeController extends BaseWebCrud
      */
     public function dashboard()
     {
-        $attendence = [];
-        $reward = [];
-        $berita = [];
-        if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF)) {
-            $attendence = Attendence::where('employee_id', auth()->user()->employee->id)->orderBy('absence_date', 'desc')->limit(10)->get();
-            $reward = RewardHistory::where('employee_id', auth()->user()->employee->id)->orderBy('created_at', 'desc')->limit(5)->get();
-
-            $berita = Berita::where('status', Berita::PUBLISH)->where(function ($query) {
-                $from = Carbon::now()->format('Y-m-01');
-                $to = Carbon::now()->format('Y-m-t');
-                $query->where('start_date', '>=', $from)
-                    ->where('end_date', '<=', $to);
-            })->orderBy('start_date', 'desc')->orderBy('created_at', 'desc')->limit(5)->get();
-        }
+       $asrama = Asramas::count();
+       $kamar = Room::count();
+       $tamu = Booking::where('status', 2)->count();
+       $booking = Booking::where('status', 0)->count();
         return view('dashboard', [
-            'absen' => $attendence,
-            'rewards' => $reward,
-            'berita' => $berita
+            'asrama'=>$asrama,
+            'kamar'=>$kamar,
+            'tamu'=>$tamu,
+            'booking'=>$booking
+
         ]);
     }
 

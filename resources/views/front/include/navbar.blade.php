@@ -15,6 +15,9 @@
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
+            @php
+                $asrama = \App\Models\Asramas::get();
+            @endphp
             <!-- Place this tag where you want the button to render. -->
             <li class="nav-item dropdown lh-1 me-3">
                 <a class="nav-link dropdown-toggle navbar-brand" href="javascript:void(0)" id="navbarDropdown"
@@ -22,14 +25,11 @@
                     Cari Asrama
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="javascript:void(0)"><i class='bx bxs-building'></i> ASRAMA A</a>
+                    @foreach ($asrama as $item)
+                    <li><a class="dropdown-item" href="{{ route('web.homepage.detail-asrama.front',['id'=>$item->uuid]) }}"><i class='bx bxs-building'></i>{{ $item->title }}</a>
                     </li>
-                    <li><a class="dropdown-item" href="javascript:void(0)"><i class='bx bxs-building'></i> ASRAMA B</a>
-                    </li>
-                    <li><a class="dropdown-item" href="javascript:void(0)"><i class='bx bxs-building'></i> ASRAMA C</a>
-                    </li>
-                    <li><a class="dropdown-item" href="javascript:void(0)"><i class='bx bxs-building'></i> ASRAMA D</a>
-                    </li>
+                        
+                    @endforeach
                 </ul>
                 {{-- <a href="#" class="navbar-brand">Cari Asrama</a> --}}
             </li>

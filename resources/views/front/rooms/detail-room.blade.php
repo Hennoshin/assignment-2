@@ -82,15 +82,15 @@
                                                 <h3 class="card-title">{{ $row->title }}</h3>
                                                 <h4 class="card-title">Fasilitas</h4>
                                                 <ul class="list-unstyled mt-2">
-                                                    <li>
-                                                        <ul>
-                                                            @forelse ($row->RoomFasilitas as $item)
-                                                            <li>{{ $item?->fasilitas?->title }}</li>
-                                                            @empty
-                                                            <li>Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini</li>
-                                                            @endforelse
-                                                        </ul>
-                                                    </li>
+                                                    @forelse ($row->RoomFasilitas as $item)
+                                                        <li>
+                                                            <ul>
+                                                                <li>{{ $item?->fasilitas?->title }}</li>
+                                                            </ul>
+                                                        </li>
+                                                    @empty
+                                                    <li>Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini</li>
+                                                    @endforelse
                                                 </ul>
                                                 <hr/>
                                                 @if (auth()->user() != null)

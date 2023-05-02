@@ -33,6 +33,15 @@ class LandingPageController extends BaseWebCrud
             'row' => $room,
         ]);
     }
+    public function asramaDetail($uuid, Request $request)
+    {
+       $asrama = Asramas::where('uuid', $uuid)->firstOrFail();
+       $kamar = Room::with(['RoomFasilitas'])->where('asrama_id', $asrama->id)->get();
+        return view('front.asrama.detail-asrama', [
+            'row' => $asrama,
+            'room' => $kamar
+        ]);
+    }
 
     public function RoomBooking(Request $request)
     {

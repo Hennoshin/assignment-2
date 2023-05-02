@@ -82,15 +82,18 @@
                                                 <h5 class="card-title">Fasilitas</h5>
                                                 <small>
                                                     <ul class="list-unstyled mt-2">
-                                                        @forelse ($item->RoomFasilitas as $items)
-                                                        <li>
-                                                            <ul>
-                                                                <li>{{ $items?->fasilitas?->title }}</li>
-                                                            </ul>
-                                                         </li>
-                                                        @empty
-                                                            Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini
-                                                        @endforelse
+                                                        @if (isset($item->RoomFasilitas))
+                                                            @foreach ($item->RoomFasilitas as $rf)
+                                                            <li>
+                                                                <ul>
+                                                                    <li>{{ $rf?->fasilitas?->title }}</li>
+                                                                </ul>
+                                                            </li>
+                                                            @endforeach
+                                                        @else
+                                                        <li>Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini</li>
+                                                        @endif
+                                                        
                                                     </ul>
                                                 </small>
                                                     <div class="card-title mb-0">
