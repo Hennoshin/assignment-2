@@ -26,7 +26,7 @@ class PesananController extends BaseWebCrud
     public function __prepareQueryList($query)
     {
         if(auth()->user()->hasRole(RoleConst::STUDENT)) {
-            $query = $query->where('user_id', auth()->user()->id);
+            $query = $query->where('user_id', auth()->user()->id)->whereIn('status', [$this->model::VERIFIED, $this->model::FAILED]);
         }
         return $query;
     }
@@ -97,5 +97,14 @@ class PesananController extends BaseWebCrud
         $updatePayment = $this->row->Payment()->delete();
 
         return redirect(route('web.pesanan.index'));
+    }
+
+    public function __viewList($data)
+    {
+        if(auth()->user()->hasRole(RoleConst::STUDENT) AND request('is_student')) {
+            return view($this->viewPath . '.pesanan_saya', $data);
+        } else {
+            return view($this->viewPath . '.list', $data);
+        }
     }
 }

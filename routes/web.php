@@ -138,5 +138,7 @@ Route::namespace('App\Http\Controllers\Web')
                 Route::get('/pesanan/{id}/verifikasi', [PesananController::class, 'verifikasi'])->name('web.pesanan.verifikasi');
                 Route::get('/pesanan/{id}/cancel', [PesananController::class, 'rejected'])->name('web.pesanan.canceled');
 
+                Route::get('/pesanan-saya', [PesananController::class, 'index'])->name('web.pesanan-saya.index');
+
             });
         });

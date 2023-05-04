@@ -72,15 +72,23 @@ $authRole = $auth->roles[0]?->name;
         </a>
     </li>
     <li class="menu-item">
-        <a href="#" class="menu-link">
+        <a href="{{ route('web.pesanan-saya.index', ['is_student' => true]) }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Basic">Kamar Saya</div>
         </a>
     </li>
+    @php
+        $totalBooking = \App\Models\Booking::where('user_id', auth()->user()->id)->where('status', 2)->count();
+    @endphp
     <li class="menu-item">
         <a href="{{ route('web.pesanan.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-book-content"></i>
-            <div data-i18n="Basic">Riwayat Booking</div>
+            <div data-i18n="Basic">Riwayat Booking 
+                @if ($totalBooking > 0)
+                <span
+                class="badge rounded-pill badge-center h-px-20 w-px-20 bg-danger">{{ $totalBooking }}</span>
+                @endif
+            </div>
         </a>
     </li>
     {{-- <li class="menu-item">

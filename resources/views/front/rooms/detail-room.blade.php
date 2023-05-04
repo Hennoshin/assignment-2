@@ -99,12 +99,13 @@
                                                 <input type="hidden" name="room_id" value="{{ $row->uuid }}">
                                                     <div class="row">
                                                             <div class="col-12"> <label>Check In</label>
-                                                                <input class="form-control" type="date" name="start_date">
+                                                                <input class="form-control" id="checkin-input" type="date" name="start_date">
                                                             </div>
                                                             <div class="col-12">
-                                                                <div class="mb-3">
+                                                                <div>
                                                                     <label for="defaultSelect" class="form-label">Jenis Sewa</label>
-                                                                    <select id="defaultSelect" name="type_harga" class="form-select">
+                                                                    <select id="jenisSewaselected" name="type_harga" class="form-select" onchange="generateCheckout(this.value)">
+                                                                      <option value="">Pilih Sewa</option>
                                                                       <option value="perhari">Harian</option>
                                                                       <option value="perbulan">Bulanan</option>
                                                                       <option value="persemester">Semester</option>
@@ -114,6 +115,9 @@
                                                             {{-- <div class="col-6"> <label>Check Out</label>
                                                                 <input class="form-control" type="date" name="end_date">
                                                             </div> --}}
+                                                            <div class="col-12 mb-3"> <label>Check Out</label>
+                                                                <input class="form-control date-checkout" type="text" disabled value="">
+                                                            </div>
                                                             <div class="card-title mt-2 mb-0">
                                                                 <h5 class="m-0 me-2">Rp. {{ number_format($row->perhari) }} / {{ 'Per Hari' }}</h5>
                                                                 <h5 class="m-0 me-2">Rp. {{ number_format($row->perbulan) }} / {{ 'Per Bulan' }}</h5>
@@ -214,7 +218,38 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+        function generateCheckout(val) {
+            let checkin = $("#checkin-input").val()
+            if(checkin == '') {
+                alert('Pilih tanggal Check In terlebih Dahulu.')
+            }
+            var date = new Date(checkin);
+            // add a day
+            if(val == 'perhari') {
+                date.setDate(date.getDate() + 1)
+            } else if (val == 'perbulan') {
+                date.setDate(date.getDate() + 30)
+            } else if (val == 'persemester') {
+                date.setDate(date.getDate() + 180)
+            }
 
+            $(".date-checkout").val(formatDate(date))
+        }
+
+        function formatDate(date) {
+            const yyyy = date.getFullYear();
+            let mm = date.getMonth(); // Months start at 0!
+            let dd = date.getDate();
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            const formattedToday = dd + '/' + mm + '/' + yyyy;
+
+            return formattedToday
+        }
+    </script>
 </body>
 
 </html>
