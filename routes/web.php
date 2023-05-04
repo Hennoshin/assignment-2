@@ -36,7 +36,7 @@ Route::get('/', function () {
 
 // LANDING PAGE
 Route::get('/landing', [App\Http\Controllers\LandingPageController::class, 'landingPages'])->name('web.homepage.front');
-// Route::get('/asrama/{id}', [App\Http\Controllers\LandingPageController::class, 'asramaDetail'])->name('web.homepage.detail-asrama.front');
+Route::get('/asrama-detail/{id}', [App\Http\Controllers\LandingPageController::class, 'asramaDetail'])->name('web.homepage.detail-asrama.front');
 Route::get('/list-room', [App\Http\Controllers\ListRoomController::class, 'listRoom'])->name('web.homepage.list-room.front');
 Route::get('/room/detail/{id}', [App\Http\Controllers\LandingPageController::class, 'roomDetail'])->name('web.homepage.room-detail.front');
 # booking ROOM
