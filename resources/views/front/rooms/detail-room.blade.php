@@ -99,7 +99,7 @@
                                                 <input type="hidden" name="room_id" value="{{ $row->uuid }}">
                                                     <div class="row">
                                                             <div class="col-12"> <label>Check In</label>
-                                                                <input class="form-control" id="checkin-input" type="date" name="start_date">
+                                                                <input class="form-control" id="checkin-input" type="date" data-date="" data-date-format="DD MMMM YYYY" name="start_date">
                                                             </div>
                                                             <div class="col-12">
                                                                 <div>
@@ -116,12 +116,12 @@
                                                                 <input class="form-control" type="date" name="end_date">
                                                             </div> --}}
                                                             <div class="col-12 mb-3"> <label>Check Out</label>
-                                                                <input class="form-control date-checkout" type="text" disabled value="">
+                                                                <input class="form-control date-checkout" type="text" disabled value="MM/DD/YYYY">
                                                             </div>
                                                             <div class="card-title mt-2 mb-0">
-                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->perhari) }} / {{ 'Per Hari' }}</h5>
-                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->perbulan) }} / {{ 'Per Bulan' }}</h5>
-                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->persemester) }} / {{ 'Per Semester' }}</h5>
+                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->perhari) }} / {{ ' Hari' }}</h5>
+                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->perbulan) }} / {{ ' Bulan' }}</h5>
+                                                                <h5 class="m-0 me-2">Rp. {{ number_format($row->persemester) }} / {{ ' Semester' }}</h5>
                                                                 @if ($row->Booking != null)
                                                                     <small class="text-muted">Stok Tidak Tersedia</small>
                                                                 @else   
@@ -223,7 +223,9 @@
             let checkin = $("#checkin-input").val()
             if(checkin == '') {
                 alert('Pilih tanggal Check In terlebih Dahulu.')
+                return
             }
+            
             var date = new Date(checkin);
             // add a day
             if(val == 'perhari') {
@@ -234,20 +236,9 @@
                 date.setDate(date.getDate() + 180)
             }
 
-            $(".date-checkout").val(formatDate(date))
-        }
-
-        function formatDate(date) {
-            const yyyy = date.getFullYear();
-            let mm = date.getMonth(); // Months start at 0!
-            let dd = date.getDate();
-
-            if (dd < 10) dd = '0' + dd;
-            if (mm < 10) mm = '0' + mm;
-
-            const formattedToday = dd + '/' + mm + '/' + yyyy;
-
-            return formattedToday
+            var dateArray =  date.toISOString().split('T')[0].split('-').concat( date.toISOString().split('T')[1].split(':') );
+            
+            $(".date-checkout").val(`${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`)
         }
     </script>
 </body>
