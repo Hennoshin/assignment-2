@@ -106,9 +106,9 @@
                                                                     <label for="defaultSelect" class="form-label">Jenis Sewa</label>
                                                                     <select id="jenisSewaselected" name="type_harga" class="form-select" onchange="generateCheckout(this.value)">
                                                                       <option value="">Pilih Sewa</option>
-                                                                      <option value="perhari">Harian</option>
-                                                                      <option value="perbulan">Bulanan</option>
-                                                                      <option value="persemester">Semester</option>
+                                                                      <option value="perhari">Harian/ 1 Hari</option>
+                                                                      <option value="perbulan">Bulanan/ 30 Hari</option>
+                                                                      <option value="persemester">Semester/ 180 Hari</option>
                                                                     </select>
                                                                   </div>
                                                             </div>
