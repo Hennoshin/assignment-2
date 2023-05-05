@@ -55,7 +55,7 @@
                                                 class="bx bx-edit-alt me-1"></i>
                                             Edit</a>
                                         <form id="form_delete_{{ $item->uuid }}"
-                                            action="{{ route('web.informations.delete', ['id' => $item->uuid]) }}"
+                                            action="{{ route('web.fasilitas.delete', ['id' => $item->uuid]) }}"
                                             method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
