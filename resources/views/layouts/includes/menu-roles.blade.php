@@ -98,6 +98,34 @@ $authRole = $auth->roles[0]?->name;
         </a>
     </li> --}}
 </ul>
+@elseif ($authRole == \App\Constants\RoleConst::STAFF)
+<ul class="menu-inner py-1">
+    <li class="menu-item {{ Route::currentRouteName() == 'web.dashboard' ? 'active' : null }}">
+        <a href="{{ url('/dashboard') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">Beranda</div>
+        </a>
+    </li>
+
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Manajemen</span></li>
+    <!-- Cards -->
+    <li class="menu-item">
+        <a href="{{ route('web.room.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Basic">Kamar</div>
+        </a>
+    </li>
+
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengelolaan</span></li>
+
+    <li class="menu-item">
+        <a href="{{ route('web.pesanan.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Basic">Pesanan</div>
+        </a>
+    </li>
+
+</ul>
 @else
 <ul class="menu-inner py-1">
     <li class="menu-item {{ Route::currentRouteName() == 'web.dashboard' ? 'active' : null }}">

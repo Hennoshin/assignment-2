@@ -29,6 +29,7 @@ class User extends Authenticatable
         'username',
         'is_enabled',
         'code_otp',
+        'asrama_id'
     ];
 
     protected $guarded =['id', 'uuid'];
@@ -59,6 +60,10 @@ class User extends Authenticatable
 
     public function avatar(){
         return $this->morphOne(FileinfoPivot::class, 'fileable')->where('slug', FileConst::USER_AVATAR_SLUG);
+    }
+
+    public function asrama(){
+        return $this->belongsTo(\App\Models\Asramas::class, 'asrama_id');
     }
 
 }

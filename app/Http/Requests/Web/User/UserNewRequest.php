@@ -30,6 +30,7 @@ class UserNewRequest extends FormRequest
             'role' => 'required|exists:roles,name',
             'email' => 'required|email|unique:users,email,except,uuid',
             'is_enabled' => 'required',
+            'asrama_id' => 'nullable',
             'password' => 'required|min:6',
             'password_confirm' => 'required|min:6|same:password',
         ];

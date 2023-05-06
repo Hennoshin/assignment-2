@@ -2,15 +2,15 @@
 
 @section('content')
     @php
-        $module = "Users"
+        $module = 'Users';
     @endphp
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">{{ $module }} /</span> Ubah {{$row->title}}
+        <span class="text-muted fw-light">{{ $module }} /</span> Ubah {{ $row->title }}
     </h4>
     <div class="card mb-4">
         <div class="card-body">
             @include('components.alert.error-field')
-            <form method="post" action="{{ route('web.users.update', ["id" => $row->uuid]) }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('web.users.update', ['id' => $row->uuid]) }}" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="row">
@@ -55,6 +55,19 @@
                             'options' => \DB::Table('roles')->get(),
                             'key_option_value' => 'name',
                             'key_option_label' => 'name',
+                            'show' => true,
+                            'disable' => false,
+                        ])
+
+                        @include('components.form.select_option', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'asrama_id',
+                            'label' => 'Asrama',
+                            'value' => old('asrama_id', $row->asrama->uuid),
+                            'placeholder' => '',
+                            'options' => \DB::Table('asrama')->get(),
+                            'key_option_value' => 'uuid',
+                            'key_option_label' => 'title',
                             'show' => true,
                             'disable' => false,
                         ])

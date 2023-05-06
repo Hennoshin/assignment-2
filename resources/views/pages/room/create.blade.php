@@ -40,7 +40,11 @@
 
                         @php
                             $roomType = \App\Models\RoomType::get();
-                            $asrama = \App\Models\Asramas::get();
+                            if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF)) {
+                                $asrama = \App\Models\Asramas::where('id', auth()->user()->asrama_id)->get();
+                            } else {
+                                $asrama = \App\Models\Asramas::get();
+                            }
                             $fasilitas = \App\Models\Fasilitas::get();
                         @endphp
                         @include('components.form.select_option', [

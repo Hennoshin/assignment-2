@@ -9,6 +9,7 @@ use App\Http\Requests\Web\RewardType\RewardTypeRequest;
 use App\Http\Requests\Web\User\UserNewRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Web\User\UserEditRequest;
+use App\Models\Asramas;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends BaseWebCrud
@@ -21,6 +22,7 @@ class UsersController extends BaseWebCrud
 
     public function __prepareDataStore($data) 
     {
+        $data['asrama_id'] = Asramas::getId($data['asrama_id']);
         $data['password'] = Hash::make($data['password']);
         return $data;
     }

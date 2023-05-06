@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Constants\RoleConst;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -27,8 +28,13 @@ class RoleSeeder extends Seeder
 
         $role->givePermissionTo(Permission::all());
 
-        $roleStaff = Role::create([
+        $roleSt = Role::create([
             'name' => RoleConst::STUDENT,
+        ]);
+        $roleSt->givePermissionTo(Permission::all());
+
+        $roleStaff = Role::create([
+            'name' => RoleConst::STAFF,
         ]);
         $roleStaff->givePermissionTo(Permission::all());
     }

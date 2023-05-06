@@ -25,6 +25,9 @@ class RoomController extends BaseWebCrud
 
     public function __prepareQueryList($query)
     {
+        if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF)) {
+            $query = $query->where('asrama_id', auth()->user()->asrama_id);
+        }
         return $query;
     }
 

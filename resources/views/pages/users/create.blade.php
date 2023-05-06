@@ -57,6 +57,19 @@
                             'show' => true,
                             'disable' => false,
                         ])
+
+                        @include('components.form.select_option', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'asrama_id',
+                            'label' => 'Asrama',
+                            'value' => 0,
+                            'placeholder' => '',
+                            'options' => \DB::Table('asrama')->get(),
+                            'key_option_value' => 'uuid',
+                            'key_option_label' => 'title',
+                            'show' => true,
+                            'disable' => false,
+                        ])
                     </div>
                     <div class="col-md-6">
                         @include('components.form.input', [

@@ -9,5 +9,6 @@ php artisan optimize:clear
 php artisan migrate --force
 php artisan passport:install --force
 php artisan key:generate --force
+php artisan db:seed --class=Database\Seeders\RoleSeeder
 
 php artisan responsecache:clear
