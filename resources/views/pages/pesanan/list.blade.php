@@ -6,6 +6,7 @@
     $booking = [];
     $payment = [];
     $paid = [];
+    
     if(count($list) > 0) {
         foreach ($list as $key => $value) {
             if($value->status == 0) {

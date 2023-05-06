@@ -14,14 +14,9 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::table('room', function (Blueprint $table) {
-            $table->bigInteger('perhari')->nullable();
-            $table->bigInteger('perbulan')->nullable();
-            $table->bigInteger('persemester')->nullable();
-        });
-
         Schema::table('booking', function (Blueprint $table) {
-            $table->string('type_harga')->nullable();
+            $table->integer('length_of_stay')->nullable();
+            $table->bigInteger('total_price')->nullable();
         });
     }
 
@@ -33,14 +28,9 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::table('room', function (Blueprint $table) {
-            $table->dropColumn('perhari');
-            $table->dropColumn('perbulan');
-            $table->dropColumn('persemester');
-        });
-
         Schema::table('booking', function (Blueprint $table) {
-            $table->dropColumn('type_harga');
+            $table->dropColumn('length_of_stay');
+            $table->dropColumn('total_price');
         });
     }
 };

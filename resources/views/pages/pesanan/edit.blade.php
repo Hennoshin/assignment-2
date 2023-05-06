@@ -42,7 +42,7 @@
                         @include('components.form.input', [
                             'class_group' => 'mb-3',
                             'field_name' => 'harga_kamar',
-                            'label' => 'Yang Harus Dibayarkan',
+                            'label' => 'Harga Sewa',
                             'value' => old(
                                 'harga_kamar',
                                 number_format($row->Room[$row['type_harga']], 2, '.', ',')),
@@ -57,9 +57,25 @@
 
                         @include('components.form.input', [
                             'class_group' => 'mb-3',
+                            'field_name' => 'length_of_stay',
+                            'label' => 'Lama Tinggal',
+                            'value' => old(
+                                'length_of_stay',
+                                $row->length_of_stay),
+                            'placeholder' => 'Total Dibayarkan',
+                            'type' => 'text',
+                            'show' => true,
+                            'disabled' => true,
+                            'min' => 0,
+                            'max' => 9999999999,
+                            'accept' => 'disable-minus',
+                        ])
+
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
                             'field_name' => 'type_harga',
                             'label' => 'Yang Harus Dibayarkan',
-                            'value' => old('type_harga', strtoupper($row->type_harga)),
+                            'value' => old('type_harga', number_format($row->total_price, 2, '.', ',')),
                             'placeholder' => 'Yang Harus Dibayarkan',
                             'type' => 'text',
                             'show' => true,
@@ -91,6 +107,22 @@
                             'type' => 'text',
                             'show' => true,
                             'disabled' => true,
+                        ])
+
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'length_of_stay',
+                            'label' => 'Jenis Sewa',
+                            'value' => old(
+                                'length_of_stay',
+                                $row->type_harga),
+                            'placeholder' => 'Total Dibayarkan',
+                            'type' => 'text',
+                            'show' => true,
+                            'disabled' => true,
+                            'min' => 0,
+                            'max' => 9999999999,
+                            'accept' => 'disable-minus',
                         ])
 
                         @include('components.form.image', [

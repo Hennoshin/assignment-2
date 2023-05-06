@@ -52,15 +52,23 @@ class LandingPageController extends BaseWebCrud
        if($input['type_harga'] == null) {
         return redirect(url()->previous());
         }
-       $input['room_id'] = Room::getId($input['room_id']);
+        $room = Room::where('uuid', $input['room_id'])->first();
+       $input['room_id'] = $room->id;
        $input['user_id'] = auth()->user()->id;
-       if($input['type_harga'] == 'perhari') {
-            $input['end_date'] = date('Y-m-d',strtotime($input['start_date'] . "+1 days"));
-        } elseif($input['type_harga'] == 'perbulan') {
-            $input['end_date'] = date('Y-m-d',strtotime($input['start_date'] . "+30 days"));
-        } elseif($input['type_harga'] == 'persemester') {
-            $input['end_date'] = date('Y-m-d',strtotime($input['start_date'] . "+180 days"));
-        }
+       $lengthOfStay = (int) $input['lenght_of_stay'];
+       $totalHarga = $room[$input['type_harga']];
+       $input['total_price'] = $totalHarga * $lengthOfStay;
+       $input['length_of_stay'] = (int) $input['lenght_of_stay'];
+       if($lengthOfStay == 0) {
+        return redirect(url()->previous());
+       }
+    //    if($input['type_harga'] == 'perhari') {
+    //         $input['end_date'] = date('Y-m-d',strtotime($input['start_date'] . "+1 days"));
+    //     } elseif($input['type_harga'] == 'perbulan') {
+    //         $input['end_date'] = date('Y-m-d',strtotime($input['start_date'] . "+30 days"));
+    //     } elseif($input['type_harga'] == 'persemester') {
+    //         $input['end_date'] = date('Y-m-d',strtotime($input['start_date'] . "+180 days"));
+    //     }
 
         
        $check = Booking::where('room_id', $input['room_id'])->where('user_id', $input['user_id'])->first();

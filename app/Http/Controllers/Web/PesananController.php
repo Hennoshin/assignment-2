@@ -26,7 +26,11 @@ class PesananController extends BaseWebCrud
     public function __prepareQueryList($query)
     {
         if(auth()->user()->hasRole(RoleConst::STUDENT)) {
-            $query = $query->where('user_id', auth()->user()->id)->whereIn('status', [$this->model::VERIFIED, $this->model::FAILED]);
+            $query = $query->where('user_id', auth()->user()->id);
+        }
+
+        if (auth()->user()->hasRole(RoleConst::STUDENT) AND request('is_student')) {
+            $query = $query->whereIn('status', [$this->model::VERIFIED, $this->model::FAILED]);
         }
         return $query;
     }

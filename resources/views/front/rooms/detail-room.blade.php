@@ -101,22 +101,27 @@
                                                             <div class="col-12"> <label>Check In</label>
                                                                 <input class="form-control" id="checkin-input" type="date" data-date="" data-date-format="DD MMMM YYYY" name="start_date">
                                                             </div>
+                                                            
                                                             <div class="col-12">
                                                                 <div>
                                                                     <label for="defaultSelect" class="form-label">Jenis Sewa</label>
-                                                                    <select id="jenisSewaselected" name="type_harga" class="form-select" onchange="generateCheckout(this.value)">
+                                                                    <select id="jenisSewaselected" name="type_harga" class="form-select">
                                                                       <option value="">Pilih Sewa</option>
-                                                                      <option value="perhari">Harian/ 1 Hari</option>
-                                                                      <option value="perbulan">Bulanan/ 30 Hari</option>
-                                                                      <option value="persemester">Semester/ 180 Hari</option>
+                                                                      <option value="perhari">Harian</option>
+                                                                      <option value="perbulan">Bulanan</option>
+                                                                      <option value="persemester">Semester</option>
                                                                     </select>
                                                                   </div>
+                                                            </div>
+                                                            <div class="col-12"> <label>Lama Menginap</label>
+                                                                <input class="form-control" type="number" name="lenght_of_stay" value="0"  onchange="generateCheckout(this.value)">
                                                             </div>
                                                             {{-- <div class="col-6"> <label>Check Out</label>
                                                                 <input class="form-control" type="date" name="end_date">
                                                             </div> --}}
                                                             <div class="col-12 mb-3"> <label>Check Out</label>
                                                                 <input class="form-control date-checkout" type="text" disabled value="MM/DD/YYYY">
+                                                                <input type="hidden" name="end_date" id="checkout-date-input">
                                                             </div>
                                                             <div class="card-title mt-2 mb-0">
                                                                 <h5 class="m-0 me-2">Rp. {{ number_format($row->perhari) }} / {{ ' Hari' }}</h5>
@@ -225,20 +230,27 @@
                 alert('Pilih tanggal Check In terlebih Dahulu.')
                 return
             }
+            let jenisSewa = $("#jenisSewaselected").val()
+            if(jenisSewa == '') {
+                alert('Pilih Jenis sewa anda.')
+                return
+            }
+            
             
             var date = new Date(checkin);
             // add a day
-            if(val == 'perhari') {
-                date.setDate(date.getDate() + 1)
-            } else if (val == 'perbulan') {
-                date.setDate(date.getDate() + 30)
-            } else if (val == 'persemester') {
-                date.setDate(date.getDate() + 180)
+            if(jenisSewa == 'perhari') {
+                date.setDate(date.getDate() + (1*val))
+            } else if (jenisSewa == 'perbulan') {
+                date.setDate(date.getDate() + (30*val))
+            } else if (jenisSewa == 'persemester') {
+                date.setDate(date.getDate() + (180 * val))
             }
 
             var dateArray =  date.toISOString().split('T')[0].split('-').concat( date.toISOString().split('T')[1].split(':') );
             
             $(".date-checkout").val(`${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`)
+            $("#checkout-date-input").val(`${dateArray[0]}-${dateArray[1]}-${dateArray[2]}`)
         }
     </script>
 </body>
