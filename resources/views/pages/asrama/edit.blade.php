@@ -10,8 +10,7 @@
     <div class="card mb-4">
         <div class="card-body">
             @include('components.alert.error-field')
-            <form method="post" action="{{ route('web.asrama.update', ['id' => $row->uuid]) }}"
-                enctype="multipart/form-data">
+            <form method="post" action="{{ route('web.asrama.update', ['id' => $row->uuid]) }}" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="row">
@@ -45,6 +44,18 @@
                             'placeholder' => 'Lokasi',
                             'show' => true,
                             'disable' => false,
+                        ])
+
+                        @include('components.form.image', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'images[]',
+                            'label' => 'Gambar',
+                            'value' => '',
+                            'placeholder' => 'Gambar',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                            'multiple' => true,
                         ])
                     </div>
                 </div>

@@ -26,7 +26,8 @@ class AsramaRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'nullable',
-            'lokasi' => 'nullable'
+            'lokasi' => 'nullable',
+            'images' => 'required'
         ];
     }
 }

@@ -42,8 +42,8 @@
                                                       <li data-bs-target="#carouselExample-cf" data-bs-slide-to="2"></li>
                                                     </ol>
                                                     <div class="carousel-inner">
-                                                        @if ($row->images != null)
-                                                            @foreach ($row->images as $item)
+                                                        @if ($row->asrama->images != null)
+                                                            @foreach ($row->asrama->images as $item)
                                                                 <div class="carousel-item active">
                                                                 <img class="d-block w-100" src="{{ url('files').'?_path='.$item->path }}" alt="First slide" />
                                                                 </div>

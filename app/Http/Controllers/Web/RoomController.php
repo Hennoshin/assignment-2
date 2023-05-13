@@ -52,19 +52,19 @@ class RoomController extends BaseWebCrud
 
     public function __beforeStore()
     {
-        $uploadData = [];
-        foreach ($this->requestData->file('images') as $key => $value) {
-            $upload = new UploadService(
-                $value,
-                FileConst::IMAGE_ROOM_PATH,
-                (string) Str::uuid()
-            );
+    //     $uploadData = [];
+    //     foreach ($this->requestData->file('images') as $key => $value) {
+    //         $upload = new UploadService(
+    //             $value,
+    //             FileConst::IMAGE_ROOM_PATH,
+    //             (string) Str::uuid()
+    //         );
 
-            $upload->uploadResize(300);
-            $uploadData[] = $upload;
-       }
+    //         $upload->uploadResize(300);
+    //         $uploadData[] = $upload;
+    //    }
 
-        $this->uploaded = $uploadData;
+    //     $this->uploaded = $uploadData;
     }
 
     public function __beforeUpdate()
@@ -93,11 +93,11 @@ class RoomController extends BaseWebCrud
             }
         }
 
-        if (!empty($this->uploaded)) {
-            foreach ($this->uploaded as $key => $value) {
-                $value->saveFile($this->row->image(), ['slug' =>  FileConst::IMAGE_ROOM_SLUG]);
-            }
-        }
+        // if (!empty($this->uploaded)) {
+        //     foreach ($this->uploaded as $key => $value) {
+        //         $value->saveFile($this->row->image(), ['slug' =>  FileConst::IMAGE_ROOM_SLUG]);
+        //     }
+        // }
     }
 
     public function __prepareDataUpdate($data)

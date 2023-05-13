@@ -26,11 +26,11 @@
                             @foreach ($room as $item)    
                             <div class="col-md-6 col-lg-3 mb-3">
                                 <div class="card h-100">
-                                    @if($item->image == null)
+                                    @if($item->asrama->image == null)
                                     <img class="card-img-top" style="height: 203px;" src="../assets/img/elements/kamar.jpg"
                                         alt="Card image cap" />
                                     @else
-                                    <img class="card-img-top" style="height: 203px;" src="{{ url('files').'?_path='.$item->image->path }}"
+                                    <img class="card-img-top" style="height: 203px;" src="{{ url('files').'?_path='.$item->asrama->image->path }}"
                                         alt="Card image cap" />
                                     @endif
                                     <div class="card-body">

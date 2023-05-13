@@ -13,10 +13,6 @@
                 'field' => 'description',
             ],
             [
-                'label' => 'Lokasi',
-                'field' => 'lokasi',
-            ],
-            [
                 'label' => 'Created At',
                 'field' => 'created_at',
             ],
@@ -48,7 +44,6 @@
                                 <strong>{{ $item->title ?? '-' }}</strong>
                             </td>
                             <td>{{ $item->description }}</td>
-                            <td>{{ $item->lokasi }}</td>
                             <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                             <td>
                                 <div class="dropdown">

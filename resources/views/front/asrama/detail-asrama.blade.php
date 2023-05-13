@@ -68,11 +68,11 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-3">
-                                                @if($item->image == null)
+                                                @if($item->asrama->image == null)
                                                 <img class="card-img-top" style="width: 100%" src="../assets/img/elements/kamar.jpg"
                                                     alt="Card image cap" />
                                                 @else
-                                                <img class="card-img-top" style="width: 100%" src="{{ url('files').'?_path='.$item->image->path }}"
+                                                <img class="card-img-top" style="width: 100%" src="{{ url('files').'?_path='.$item->asrama->image->path }}"
                                                     alt="Card image cap" />
                                                 @endif
                                             </div>
@@ -97,7 +97,7 @@
                                                     </ul>
                                                 </small>
                                                     <div class="card-title mb-0">
-                                                        <h5 class="m-2 me-2">Rp. {{ number_format($item->harga) }} / {{ $item->type_harga }}</h5>
+                                                        <h5 class="m-2 me-2">Rp. {{ number_format($item->perhari) }} / Hari</h5>
                                                         <a href="{{ route('web.homepage.room-detail.front', ['id' => $item->uuid]) }}" class="btn btn-primary">Lihat Lebih Detail</a>
                                                     </div>
                                             </div>
