@@ -63,7 +63,7 @@
                             'class_group' => 'mb-3',
                             'field_name' => 'asrama_id',
                             'label' => 'Asrama',
-                            'value' => old('asrama_id', $row->asrama->uuid),
+                            'value' => old('asrama_id', $row->asrama->uuid ?? null),
                             'placeholder' => '',
                             'options' => \DB::Table('asrama')->get(),
                             'key_option_value' => 'uuid',

@@ -63,7 +63,7 @@
                         <!-- Layout Demo -->
                         <div class="row mb-2">
                             @foreach ($room as $item)
-                            <div class="col-md-12">
+                            <div class="col-md-12 mb-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -94,7 +94,7 @@
                                                     </ul>
                                                 </small>
                                                     <div class="card-title mb-0">
-                                                        <h5 class="m-2 me-2">Rp. {{ number_format($item->harga) }} / {{ $item->type_harga }}</h5>
+                                                        <h5 class="m-2 me-2">Rp. {{ number_format($item->perbulan) }} / {{ ' Bulan' }}</h5>
                                                         <a href="{{ route('web.homepage.room-detail.front', ['id' => $item->uuid]) }}" class="btn btn-primary">Lihat Lebih Detail</a>
                                                     </div>
                                             </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\Auth\LoginController;
 use App\Http\Controllers\Web\UsersController;
 use App\Helpers\MyRoute;
 use App\Http\Controllers\Web\AsramaController;
+use App\Http\Controllers\Web\Auth\RegisterController;
 use App\Http\Controllers\Web\FasilitasController;
 use App\Http\Controllers\Web\PesananController;
 use App\Http\Controllers\Web\Profile\ProfileController;
@@ -53,9 +54,7 @@ Route::get('/syarat-dan-ketentuan', function () {
  });
 
 //  PESANAN 
-// Route::get('/pesanan', function () {
-//     return view('web.pesanan.list');
-//  });
+
 
 // Auth::routes();
 Route::namespace('App\Http\Controllers\Web')
@@ -64,7 +63,11 @@ Route::namespace('App\Http\Controllers\Web')
             Route::get('login', function () {
                 return view('auth.login');
             })->name('login');
+            Route::get('register', function () {
+                return view('auth.register');
+            })->name('register');
             Route::post('login', [LoginController::class, 'login']);
+            Route::post('register', [RegisterController::class, 'register'])->name('do_register');
             Route::post('logout', [LoginController::class, 'logout'])->name('logout');
             Route::get('/files', [App\Http\Controllers\HomeController::class, 'getFiles'])->name('web.getfiles');
             Route::group(['middleware' => 'auth:web'], function () {

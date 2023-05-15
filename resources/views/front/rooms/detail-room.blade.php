@@ -167,24 +167,35 @@
                                     </div>
                                 </div>
                             </div>
+ @php
+     $kamar = \App\Models\Room::where('asrama_id',$row->asrama_id)->get();
+    //  dd($kamar);
+
+ @endphp                           
                             
-                            
-                            <h3 class="mt-5">Asrama Lainya</h5>
+                            <h3 class="mt-5">Kamar Lainya</h5>
                             <hr/>
+                            @if ($row->asrama->images != null)
+                            @foreach ($row->asrama->images as $item)
                             <div class="col-md-6 col-lg-3 mb-3">
                                 <div class="card h-100">
-                                    <img class="card-img-top" src="../assets/img/elements/kamar.jpg"
-                                        alt="Card image cap" />
+                                    <img class="card-img-top" style="height: 250px;" src="{{ url('files').'?_path='.$item->path }}"
+                                    alt="Card image cap" />
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
+                                        <h5 class="card-title">{{ $row->title }}</h5>
                                         <p class="card-text">
-                                            Some quick example text to build on the card title and make up the bulk of
-                                            the card's content.
+                                            @forelse ($row->RoomFasilitas as $item)
+                                                       {{ $item?->fasilitas?->title }},
+                                                    @empty
+                                                    Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini
+                                                    @endforelse 
                                         </p>
-                                        <a href="javascript:void(0)" class="btn btn-outline-primary">Go somewhere</a>
+                                        <a href="javascript:void(0)" class="btn btn-outline-primary">Lebih Detail</a>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
+                            @endif
                             
                         </div>
                             <!--/ Order Statistics -->

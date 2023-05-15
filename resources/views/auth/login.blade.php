@@ -154,6 +154,8 @@
                             <div class="mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
                             </div>
+                            <hr>
+                            <small>Belum memiliki akun ? <a href="{{ route('register') }}">Register</a></small>
                         </form>
 
                         {{-- @error($error_field ?? $field)

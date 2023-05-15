@@ -14,9 +14,10 @@
                 <!-- / Navbar -->
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
-
+                    
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
+                        {!! $row->lokasi !!}
                         <h5 class="pb-1 mt-3 mb-3">List Room</h5>
                         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
                             <div class="container-fluid">
