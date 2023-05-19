@@ -102,7 +102,7 @@
             </div>
         </div>
     </div>
-    @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN) || auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
+    @if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
     <div class="buy-now">
         <a href="{{ route('web.room.create') }}" class="btn btn-danger btn-buy-now">Tambah {{ $module }}</a>
     </div>

@@ -23,14 +23,35 @@
                         <!-- Layout Demo -->
                         <!-- Examples -->
                         <div class="row mb-5">
-                            @foreach ($room as $item)    
+                            @foreach ($room as $item)
+                            @php
+                                $roomImages = [];
+                                foreach ($item->images as $key => $value) {
+                                    $roomImages[] = $value;
+                                }
+
+                                $roomTypeImages = [];
+                                if (!empty($item->roomType->images)) {
+                                    foreach ($item->roomType->images as $key => $value) {
+                                        $roomTypeImages[] = $value;
+                                    }
+                                }
+
+                                $asramaImages = [];
+                                if (!empty($item->asrama->images)) {
+                                    foreach ($item->asrama->images as $key => $value) {
+                                        $asramaImages[] = $value;
+                                    }
+                                }
+                                $images = array_merge($roomImages, $roomTypeImages, $asramaImages);
+                            @endphp    
                             <div class="col-md-6 col-lg-3 mb-3">
                                 <div class="card h-100">
-                                    @if($item->asrama->image == null)
+                                    @if(empty($images))
                                     <img class="card-img-top" style="height: 203px;" src="../assets/img/elements/kamar.jpg"
                                         alt="Card image cap" />
                                     @else
-                                    <img class="card-img-top" style="height: 203px;" src="{{ url('files').'?_path='.$item->asrama->image->path }}"
+                                    <img class="card-img-top" style="height: 203px;" src="{{ url('files').'?_path='.$images[0]->path }}"
                                         alt="Card image cap" />
                                     @endif
                                     <div class="card-body">

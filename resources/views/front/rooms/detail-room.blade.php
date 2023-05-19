@@ -4,7 +4,28 @@
 @include('front.include.header')
 
 <body>
-    
+    @php
+        $roomImages = [];
+        foreach ($row->images as $key => $value) {
+            $roomImages[] = $value;
+        }
+
+        $roomTypeImages = [];
+        if (!empty($row->roomType->images)) {
+            foreach ($row->roomType->images as $key => $value) {
+                $roomTypeImages[] = $value;
+            }
+        }
+
+        $asramaImages = [];
+        if (!empty($row->asrama->images)) {
+            foreach ($row->asrama->images as $key => $value) {
+                $asramaImages[] = $value;
+            }
+        }
+        
+        $images = array_merge($roomImages, $roomTypeImages, $asramaImages);
+    @endphp
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar  layout-without-menu">
         <div class="layout-container">
@@ -42,9 +63,9 @@
                                                       <li data-bs-target="#carouselExample-cf" data-bs-slide-to="2"></li>
                                                     </ol>
                                                     <div class="carousel-inner">
-                                                        @if ($row->asrama->images != null)
-                                                            @foreach ($row->asrama->images as $item)
-                                                                <div class="carousel-item active">
+                                                        @if ($images != null)
+                                                            @foreach ($images as $kimg => $item)
+                                                                <div class="carousel-item {{ $kimg == 0 ? 'active' : null }}">
                                                                 <img class="d-block w-100" src="{{ url('files').'?_path='.$item->path }}" alt="First slide" />
                                                                 </div>
                                                             @endforeach
@@ -135,7 +156,9 @@
                                                             </div>
                                                             <div class="col-6">
                                                                 @if ($row->Booking == null)
-                                                                <button type="submit" class="btn btn-success">Booking Sekarang</button>
+                                                                <button @if (!auth()->user()->hasRole(\App\Constants\RoleConst::STUDENT))
+                                                                    disabled
+                                                                @endif type="submit" class="btn btn-success">Booking Sekarang</button>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -168,7 +191,7 @@
                                 </div>
                             </div>
  @php
-     $kamar = \App\Models\Room::where('asrama_id',$row->asrama_id)->get();
+     $kamar = \App\Models\Room::where('asrama_id',$row->asrama_id)->where('id', '!=', $row->id)->get();
     //  dd($kamar);
 
  @endphp                           

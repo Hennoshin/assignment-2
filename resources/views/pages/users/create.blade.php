@@ -120,3 +120,16 @@
             </form>
         </div>
     @endsection
+
+    @section('script')
+    @parent
+    <script>
+        $('#role').on('change', function() {
+            if (this.value == 'student' || this.value == 'super-admin') {
+                $('#asrama_id').prop('disabled', 'disabled')
+            } else {
+                $('#asrama_id').prop('disabled', false)
+            }
+        });
+    </script>
+    @endsection

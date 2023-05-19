@@ -23,15 +23,25 @@ class HomeController extends BaseWebCrud
      */
     public function dashboard()
     {
-       $asrama = Asramas::count();
-       $kamar = Room::count();
-       $tamu = Booking::where('status', 2)->count();
-       $booking = Booking::where('status', 0)->count();
+        $asrama = Asramas::count();
+        if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF)) {
+            $kamar = Room::where('asrama_id', auth()->user()->asrama_id)->count();
+            $tamu = Booking::whereHas('room', function($q) {
+                return $q->where('asrama_id', auth()->user()->asrama_id);
+            })->where('status', 2)->count();
+            $booking = Booking::whereHas('room', function($q) {
+                return $q->where('asrama_id', auth()->user()->asrama_id);
+            })->where('status', 0)->count();
+        } else {
+            $kamar = Room::count();
+            $tamu = Booking::where('status', 2)->count();
+            $booking = Booking::where('status', 0)->count();
+        }
         return view('dashboard', [
-            'asrama'=>$asrama,
-            'kamar'=>$kamar,
-            'tamu'=>$tamu,
-            'booking'=>$booking
+            'asrama' => $asrama,
+            'kamar' => $kamar,
+            'tamu' => $tamu,
+            'booking' => $booking
 
         ]);
     }

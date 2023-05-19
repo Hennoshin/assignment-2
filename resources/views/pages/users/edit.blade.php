@@ -69,7 +69,9 @@
                             'key_option_value' => 'uuid',
                             'key_option_label' => 'title',
                             'show' => true,
-                            'disable' => false,
+                            'disable' =>
+                                $row->roles[0]->name == 'student' or
+                                ($row->roles[0]->name == 'super-admin' ? true : false),
                         ])
                     </div>
                     <div class="col-md-6">
@@ -120,4 +122,16 @@
                 </div>
             </form>
         </div>
+    @endsection
+    @section('script')
+        @parent
+        <script>
+            $('#role').on('change', function() {
+                if (this.value == 'student' || this.value == 'super-admin') {
+                    $('#asrama_id').prop('disabled', 'disabled')
+                } else {
+                    $('#asrama_id').prop('disabled', false)
+                }
+            });
+        </script>
     @endsection

@@ -44,14 +44,14 @@ $authRole = $auth->roles[0]?->name;
         </a>
     </li>
 
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengelolaan</span></li>
+    {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengelolaan</span></li>
 
     <li class="menu-item">
         <a href="{{ route('web.pesanan.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Basic">Pesanan</div>
         </a>
-    </li>
+    </li> --}}
 
 </ul>
 @elseif ($authRole == \App\Constants\RoleConst::STUDENT)

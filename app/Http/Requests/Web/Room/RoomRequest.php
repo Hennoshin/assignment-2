@@ -31,7 +31,7 @@ class RoomRequest extends FormRequest
             'perhari' => 'required',
             'perbulan' => 'required',
             'persemester' => 'required',
-            // 'images' => 'required'
+            'images' => 'nullable'
         ];
     }
 }

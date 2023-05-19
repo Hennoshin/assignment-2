@@ -37,14 +37,6 @@
     <div class="card">
         <h5 class="card-header">{{ $module }}</h5>
         <div class="table-responsive text-nowrap px-4 py-2" style="height: 600px;">
-            @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
-                <div class="text-end">
-                    <a target="_blank" href="{{ route('web.users.export') }}" type="button"
-                        class="btn btn-icon btn-primary">
-                        <span class="tf-icons bx bxs-file-export"></span>
-                    </a>
-                </div>
-            @endif
             <table class="table">
                 <thead>
                     <tr>

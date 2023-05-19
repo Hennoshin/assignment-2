@@ -35,6 +35,18 @@
                             'show' => true,
                             'disable' => false,
                         ])
+
+                        @include('components.form.image', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'images[]',
+                            'label' => 'Gambar',
+                            'value' => '',
+                            'placeholder' => 'Gambar',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                            'multiple' => true,
+                        ])
                     </div>
                 </div>
                 <div class="form-group">

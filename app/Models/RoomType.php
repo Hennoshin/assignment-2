@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Constants\FileConst;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -28,6 +29,14 @@ class RoomType extends Model
     public function updatedBy()
     {
         return $this->belongsTo(\App\Models\User::class, 'updated_by');
+    }
+
+    public function image(){
+        return $this->morphOne(FileinfoPivot::class, 'fileable')->where('slug', FileConst::IMAGE_ROOM_TYPE_SLUG);
+    }
+
+    public function images(){
+        return $this->morphMany(FileinfoPivot::class, 'fileable')->where('slug', FileConst::IMAGE_ROOM_TYPE_SLUG);
     }
 
 }

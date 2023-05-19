@@ -25,7 +25,8 @@ class RoomTypeRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'images' => 'nullable'
             // 'lokasi' => 'nullable'
         ];
     }

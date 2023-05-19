@@ -29,34 +29,27 @@
                                 </button>
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page"
-                                                href="javascript:void(0)">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="javascript:void(0)">Link</a>
-                                        </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                                 id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                                 aria-expanded="false">
-                                                Tipe Kamar
+                                                {{ request('room_type') == null ? 'Tipe Kamar' : \App\Models\RoomType::where('uuid', request('room_type'))->first()->title }}
                                             </a>
+                                            @php
+                                                $roomType = \App\Models\RoomType::get();
+                                            @endphp
                                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><a class="dropdown-item" href="javascript:void(0)">Standart</a></li>
-                                                <li><a class="dropdown-item" href="javascript:void(0)">Single</a></li>
-                                                <li><a class="dropdown-item" href="javascript:void(0)">Double</a></li>
+                                                <li><a class="dropdown-item" href="{{ url()->current() }}">{{ "Semua Tipe Kamar" }}</a></li>
+                                                @foreach ($roomType as $item)
+                                                    <li><a class="dropdown-item" href="{{ url()->current().'?room_type='.$item->uuid }}">{{ $item->title }}</a></li>
+                                                @endforeach
                                             </ul>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" href="javascript:void(0)"
-                                                tabindex="-1">Disabled</a>
                                         </li>
                                     </ul>
                                     <form class="d-flex" onsubmit="return false">
-                                        <input class="form-control me-2" type="search" placeholder="Search"
-                                            aria-label="Search">
-                                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                                        <input class="form-control me-2" id="search-input" type="search" placeholder="Search"
+                                            aria-label="Search" value="{{ request('q') }}">
+                                        <button class="btn btn-outline-primary" onclick="doSearch()" type="submit">Search</button>
                                     </form>
                                 </div>
                             </div>
@@ -64,16 +57,37 @@
                         <!-- Layout Demo -->
                         <div class="row mb-2">
                             @foreach ($room as $item)
+                            @php
+                                $roomImages = [];
+                                foreach ($item->images as $key => $value) {
+                                    $roomImages[] = $value;
+                                }
+
+                                $roomTypeImages = [];
+                                if (!empty($item->roomType->images)) {
+                                    foreach ($item->roomType->images as $key => $value) {
+                                        $roomTypeImages[] = $value;
+                                    }
+                                }
+
+                                $asramaImages = [];
+                                if (!empty($item->asrama->images)) {
+                                    foreach ($item->asrama->images as $key => $value) {
+                                        $asramaImages[] = $value;
+                                    }
+                                }
+                                $images = array_merge($roomImages, $roomTypeImages, $asramaImages);
+                            @endphp    
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-3">
-                                                @if($item->asrama->image == null)
+                                                @if(empty($images))
                                                 <img class="card-img-top" style="width: 100%" src="../assets/img/elements/kamar.jpg"
                                                     alt="Card image cap" />
                                                 @else
-                                                <img class="card-img-top" style="width: 100%" src="{{ url('files').'?_path='.$item->asrama->image->path }}"
+                                                <img class="card-img-top" style="width: 100%" src="{{ url('files').'?_path='.$images[0]->path }}"
                                                     alt="Card image cap" />
                                                 @endif
                                             </div>
@@ -143,7 +157,33 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+        function replaceUrlParam(paramName, paramValue){
+            var url = window.location.href;
 
+            if (paramValue == null) {
+                paramValue = '';
+            }
+
+            var pattern = new RegExp('\\b('+paramName+'=).*?(&|#|$)');
+            if (url.search(pattern)>=0) {
+                return url.replace(pattern,'$1' + paramValue + '$2');
+            }
+
+            url = url.replace(/[?#]$/,'');
+            return url + (url.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
+        }
+
+        function doSearch() {
+            let value = $('#search-input').val();
+
+            var url = "{{ url()->full() }}";  
+
+            let a = replaceUrlParam('q', value)
+
+            window.location.replace(a);
+        }
+    </script>
 </body>
 
 </html>

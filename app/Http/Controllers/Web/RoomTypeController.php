@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Web;
 use App\Http\Modules\BaseWebCrud;
 use App\Http\Requests\Web\RoomType\RoomTypeRequest;
 use App\Models\RoomType;
+use App\Services\UploadService;
+use App\Constants\FileConst;
+use Illuminate\Support\Str;
 
 class RoomTypeController extends BaseWebCrud
 {
@@ -13,6 +16,8 @@ class RoomTypeController extends BaseWebCrud
 
     public $storeValidator = RoomTypeRequest::class;
     public $updateValidator = RoomTypeRequest::class;
+
+    public $uploaded = [];
 
     public function __prepareDataStore($data) 
     {
@@ -31,5 +36,48 @@ class RoomTypeController extends BaseWebCrud
     public function __successUpdate()
     {
         return $this->__successStore();
+    }
+
+    public function __beforeStore()
+    {
+        $uploadData = [];
+        foreach ($this->requestData->file('images') as $key => $value) {
+            $upload = new UploadService(
+                $value,
+                FileConst::IMAGE_ROOM_TYPE_PATH,
+                (string) Str::uuid()
+            );
+
+            $upload->uploadResize(300);
+            $uploadData[] = $upload;
+       }
+
+        $this->uploaded = $uploadData;
+    }
+
+    public function __beforeUpdate()
+    {
+        $this->__beforeStore();
+    }
+
+    public function __afterUpdate()
+    {
+        if (!empty($this->uploaded)) {
+            foreach ($this->uploaded as $key => $value) {
+                $value->deleteFile($this->row->image());
+            }
+        }
+
+        $this->__afterStore();
+    }
+
+    public function __afterStore()
+    {
+
+        if (!empty($this->uploaded)) {
+            foreach ($this->uploaded as $key => $value) {
+                $value->saveFile($this->row->image(), ['slug' =>  FileConst::IMAGE_ROOM_TYPE_SLUG]);
+            }
+        }
     }
 }
