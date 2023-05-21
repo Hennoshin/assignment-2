@@ -101,25 +101,36 @@
 
                         <h5 class="pb-1 mb-4">Asrama Favorit</h5>
                         <div class="row mb-1">
-                            <div class="col-md">
-                                <div class="card mb-3">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                        <img class="card-img card-img-left" src="../assets/img/elements/12.jpg" alt="Card image" />
-                                        </div>
-                                        <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Asrama A</h5>
-                                            <p class="card-text">
-                                            Merupakan Asrama yang terletak di sekitar kawasan kampus Universitas Riau, yang memiliki fasilitas yang nyaman untuk penginapan untuk Mahasiswa/i Universitas Riau.
-                                            </p>
-                                            {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
-                                        </div>
+                            @php
+                                $asrama = \App\Models\Asramas::get();
+                            @endphp
+                            @foreach ($asrama as $item)
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                @if(isset($item->image->path))
+                                                <img class="card-img card-img-left" src="{{ url('files').'?_path='.$item->image->path }}" style="width: 180px;" alt="Card image" />
+                                                @else
+                                                <img class="card-img card-img-right" src="../assets/img/elements/17.jpg"  style="width: 180px;" alt="Card image" />
+                                                @endif
+                                            </div>
+                                            <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $item->title }}</h5>
+                                                <p class="card-text">
+                                                    {{ $item->description }}
+                                                {{-- Merupakan Asrama yang terletak di sekitar kawasan kampus Universitas Riau, yang memiliki fasilitas yang nyaman untuk penginapan untuk Mahasiswa/i Universitas Riau. --}}
+                                                </p>
+                                                {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+                                            </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md">
+                                
+                            @endforeach
+                            {{-- <div class="col-md">
                                 <div class="card mb-3">
                                     <div class="row g-0">
                                         <div class="col-md-8">
@@ -128,7 +139,6 @@
                                             <p class="card-text">
                                                 Merupakan Asrama yang terletak di sekitar kawasan kampus Universitas Riau, yang memiliki fasilitas yang nyaman untuk penginapan untuk Mahasiswa/i Universitas Riau.
                                             </p>
-                                            {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                                         </div>
                                         </div>
                                         <div class="col-md-4">
@@ -136,7 +146,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         
                         <!--/ Layout Demo -->
