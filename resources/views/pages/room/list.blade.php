@@ -65,6 +65,7 @@
                             <td>{{ $fas }}</td>
                             <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                             <td>
+                                @if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
@@ -85,6 +86,7 @@
                                             Delete</a>
                                     </div>
                                 </div>
+                                @endif
                             </td>
                         </tr>
                     @empty
