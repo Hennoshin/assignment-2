@@ -60,8 +60,8 @@
                             <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
                                 <strong>{{ $item->title ?? '-' }}</strong>
                             </td>
-                            <td>{{ $item->RoomType->title }}</td>
-                            <td>{{ $item->Asrama->title }}</td>
+                            <td>{{ $item->RoomType->title ?? '-'}}</td>
+                            <td>{{ $item->Asrama->title ?? '-' }}</td>
                             <td>{{ $fas }}</td>
                             <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                             <td>

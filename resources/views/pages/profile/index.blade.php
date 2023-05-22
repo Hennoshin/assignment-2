@@ -125,7 +125,7 @@
                             @include('components.form.password', [
                                 'class_group' => 'mb-3',
                                 'field_name' => 'password',
-                                'label' => 'Old Password',
+                                'label' => 'New Password',
                                 'value' => old('password'),
                                 'placeholder' => 'password',
                                 'show' => true,

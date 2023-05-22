@@ -110,17 +110,30 @@ $authRole = $auth->roles[0]?->name;
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Manajemen</span></li>
     <!-- Cards -->
     <li class="menu-item">
+        <a href="{{ route('web.asrama.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-buildings"></i>  
+            <div data-i18n="Basic">Asrama</div>
+        </a>
+    </li>
+    <li class="menu-item">
         <a href="{{ route('web.room.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Basic">Kamar</div>
         </a>
     </li>
     <li class="menu-item">
-        <a href="{{ route('web.asrama.index') }}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-buildings"></i>  
-            <div data-i18n="Basic">Asrama</div>
+        <a href="{{ route('web.room-type.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-bed"></i>
+            <div data-i18n="Basic">Tipe Kamar</div>
         </a>
     </li>
+    <li class="menu-item">
+        <a href="{{ route('web.fasilitas.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-wifi"></i>
+            <div data-i18n="Basic">Fasilitas</div>
+        </a>
+    </li>
+   
 
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengelolaan</span></li>
 
