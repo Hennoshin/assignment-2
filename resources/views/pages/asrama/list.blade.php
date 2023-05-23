@@ -46,7 +46,7 @@
                             <td>{{ $item->description }}</td>
                             <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                             <td>
-                                @if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
+                                @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
@@ -55,6 +55,10 @@
                                             href="{{ route('web.asrama.edit', ['id' => $item->uuid]) }}"><i
                                                 class="bx bx-edit-alt me-1"></i>
                                             Edit</a>
+                                            <a class="dropdown-item"
+                                            href="{{ route('web.asrama.show', ['id' => $item->uuid]) }}"><i
+                                                class="bx bx-bullseye me-1"></i>
+                                            Detail</a>
                                         <form id="form_delete_{{ $item->uuid }}"
                                             action="{{ route('web.asrama.delete', ['id' => $item->uuid]) }}"
                                             method="POST">
@@ -65,6 +69,17 @@
                                             onclick="deleteAction(`{{ $item->uuid }}`, `{{ route('web.asrama.delete', ['id' => $item->uuid]) }}`)"><i
                                                 class="bx bx-trash me-1"></i>
                                             Delete</a>
+                                    </div>
+                                </div>
+                                @elseif(auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item"
+                                            href="{{ route('web.asrama.show', ['id' => $item->uuid]) }}"><i
+                                                class="bx bx-bullseye me-1"></i>
+                                            Detail</a>
                                     </div>
                                 </div>
                                 @endif
@@ -85,7 +100,7 @@
             </div>
         </div>
     </div>
-    @if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
+    @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
     <div class="buy-now">
         <a href="{{ route('web.asrama.create') }}" class="btn btn-danger btn-buy-now">Tambah {{ $module }}</a>
     </div>

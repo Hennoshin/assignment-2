@@ -39,4 +39,9 @@ class Asramas extends Model
         return $this->morphMany(FileinfoPivot::class, 'fileable')->where('slug', FileConst::IMAGE_ASRAMA_SLUG);
     }
 
+    public function rooms()
+    {
+        return $this->hasMany(\App\Models\Room::class, 'asrama_id');
+    }
+
 }

@@ -46,6 +46,7 @@
                             <td>{{ $item->description }}</td>
                             <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                             <td>
+                                @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
@@ -54,6 +55,10 @@
                                             href="{{ route('web.room-type.edit', ['id' => $item->uuid]) }}"><i
                                                 class="bx bx-edit-alt me-1"></i>
                                             Edit</a>
+                                            <a class="dropdown-item"
+                                            href="{{ route('web.room-type.show', ['id' => $item->uuid]) }}"><i
+                                                class="bx bx-bullseye me-1"></i>
+                                            Detail</a>
                                         <form id="form_delete_{{ $item->uuid }}"
                                             action="{{ route('web.room-type.delete', ['id' => $item->uuid]) }}"
                                             method="POST">
@@ -66,6 +71,18 @@
                                             Delete</a>
                                     </div>
                                 </div>
+                                @elseif(auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item"
+                                            href="{{ route('web.room-type.show', ['id' => $item->uuid]) }}"><i
+                                                class="bx bx-bullseye me-1"></i>
+                                            Detail</a>
+                                    </div>
+                                </div>
+                                @endif
                             </td>
                         </tr>
                     @empty

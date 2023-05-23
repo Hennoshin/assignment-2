@@ -107,6 +107,7 @@ Route::namespace('App\Http\Controllers\Web')
                     Route::get('/create', [AsramaController::class, 'create'])->name('web.asrama.create');
                     Route::post('/', [AsramaController::class, 'store'])->name('web.asrama.store');
                     Route::get('/{id}/edit', [AsramaController::class, 'edit'])->name('web.asrama.edit');
+                    Route::get('/{id}/show', [AsramaController::class, 'show'])->name('web.asrama.show');
                     Route::put('/{id}', [AsramaController::class, 'update'])->name('web.asrama.update');
                     Route::delete('/{id}', [AsramaController::class, 'destroy'])->name('web.asrama.delete');
                 });
@@ -115,6 +116,7 @@ Route::namespace('App\Http\Controllers\Web')
                     Route::get('/create', [RoomTypeController::class, 'create'])->name('web.room-type.create');
                     Route::post('/', [RoomTypeController::class, 'store'])->name('web.room-type.store');
                     Route::get('/{id}/edit', [RoomTypeController::class, 'edit'])->name('web.room-type.edit');
+                    Route::get('/{id}/show', [RoomTypeController::class, 'show'])->name('web.room-type.show');
                     Route::put('/{id}', [RoomTypeController::class, 'update'])->name('web.room-type.update');
                     Route::delete('/{id}', [RoomTypeController::class, 'destroy'])->name('web.room-type.delete');
                 });
@@ -123,6 +125,7 @@ Route::namespace('App\Http\Controllers\Web')
                     Route::get('/create', [RoomController::class, 'create'])->name('web.room.create');
                     Route::post('/', [RoomController::class, 'store'])->name('web.room.store');
                     Route::get('/{id}/edit', [RoomController::class, 'edit'])->name('web.room.edit');
+                    Route::get('/{id}/show', [RoomController::class, 'show'])->name('web.room.show');
                     Route::put('/{id}', [RoomController::class, 'update'])->name('web.room.update');
                     Route::delete('/{id}', [RoomController::class, 'destroy'])->name('web.room.delete');
                 });
@@ -131,6 +134,7 @@ Route::namespace('App\Http\Controllers\Web')
                     Route::get('/create', [FasilitasController::class, 'create'])->name('web.fasilitas.create');
                     Route::post('/', [FasilitasController::class, 'store'])->name('web.fasilitas.store');
                     Route::get('/{id}/edit', [FasilitasController::class, 'edit'])->name('web.fasilitas.edit');
+                    Route::get('/{id}/show', [FasilitasController::class, 'show'])->name('web.fasilitas.show');
                     Route::put('/{id}', [FasilitasController::class, 'update'])->name('web.fasilitas.update');
                     Route::delete('/{id}', [FasilitasController::class, 'destroy'])->name('web.fasilitas.delete');
                 });
