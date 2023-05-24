@@ -77,9 +77,14 @@
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item"
+                                            href="{{ route('web.asrama.edit', ['id' => $item->uuid]) }}"><i
+                                                class="bx bx-edit-alt me-1"></i>
+                                            Edit</a>
+                                        <a class="dropdown-item"
                                             href="{{ route('web.asrama.show', ['id' => $item->uuid]) }}"><i
                                                 class="bx bx-bullseye me-1"></i>
                                             Detail</a>
+                                            
                                     </div>
                                 </div>
                                 @endif

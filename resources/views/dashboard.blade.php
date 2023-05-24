@@ -23,6 +23,7 @@
         </div>
         {{-- <div class="col-lg-4 col-md-4 order-1"> --}}
         <div class="row">
+            @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
             <div class="col-lg-3 col-md-12 col mb-4">
                 <div class="card">
                     <div class="card-body">
@@ -115,6 +116,77 @@
                     </div>
                 </div>
             </div>
+            @elseif(auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
+            <div class="col-lg-4 col-md-12 col mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <img src="../assets/img/icons/unicons/wallet-info.png" alt="Credit Card" class="rounded">
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span>Total Kamar</span>
+                        <h3 class="card-title text-nowrap mb-1">{{ $kamar }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <img src="../assets/img/icons/unicons/chart-success.png" alt="Credit Card" class="rounded">
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span>Total Tamu</span>
+                        <h3 class="card-title text-nowrap mb-1">{{ $tamu }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <img src="../assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded">
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span>Total Booking</span>
+                        <h3 class="card-title text-nowrap mb-1">{{ $booking }}</h3>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
         {{-- </div> --}}
 

@@ -75,6 +75,45 @@
                         ])
                     </div>
                     <div class="col-md-6">
+
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'nik',
+                            'label' => 'nik',
+                            'value' => old('nik', $row->nik),
+                            'placeholder' => 'NIK',
+                            'show' => true,
+                            'disable' => false,
+                        ])
+
+                        @include('components.form.select_option', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'gender',
+                            'label' => 'gender',
+                            'value' => old('gender', $row->gender),
+                            'placeholder' => 'Gender',
+                            'show' => true,
+                            'options' => [
+                                ['label' => 'Laki-laki', 'value' => 'L'],
+                                ['label' => 'Perempuan', 'value' => 'P'],
+                            ],
+                            'key_option_value' => 'value',
+                            'key_option_label' => 'label',
+                            'required' => true,
+                            'disable' => false,
+                            'accept' => null,
+                        ])
+
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'fakultas',
+                            'label' => 'Fakultas',
+                            'value' => old('fakultas', $row->fakultas),
+                            'placeholder' => 'Fakultas',
+                            'show' => true,
+                            'disable' => false,
+                        ])
+
                         @include('components.form.input', [
                             'class_group' => 'mb-3',
                             'field_name' => 'password',

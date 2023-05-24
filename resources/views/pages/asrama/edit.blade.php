@@ -36,6 +36,18 @@
                             'show' => true,
                             'disable' => false,
                         ])
+
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'address',
+                            'label' => 'Alamat',
+                            'value' => old('address', $row->address),
+                            'placeholder' => 'Alamat',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                        ])
+
                         @include('components.form.text_area', [
                             'class_group' => 'mb-3',
                             'field_name' => 'lokasi',

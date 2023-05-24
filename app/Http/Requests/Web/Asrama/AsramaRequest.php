@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Web\Asrama;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Queue\Connectors\NullConnector;
 
 class AsramaRequest extends FormRequest
 {
@@ -27,7 +28,8 @@ class AsramaRequest extends FormRequest
             'title' => 'required',
             'description' => 'nullable',
             'lokasi' => 'nullable',
-            'images' => 'required'
+            'images' => 'required',
+            'address' => 'nullable'
         ];
     }
 }

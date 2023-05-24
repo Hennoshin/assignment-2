@@ -63,12 +63,13 @@
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Selamat Datang, <br/><a href="{{ url('/') }}">Book It! 👋</a></h4>
+                        <h4 class="mb-2">Selamat Datang, <br /><a href="{{ url('/') }}">Book It! 👋</a></h4>
 
                         @include('components.alert.error', ['error' => $errors])
                         {{-- <p class="mb-4">Please sign-in to your account and start the adventure</p> --}}
 
-                        <form id="formAuthentication" class="mb-3" action="{{ route('do_register') }}" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="{{ route('do_register') }}"
+                            method="POST">
                             @csrf
                             <div class="mb-3">
                                 @include('components.form.input', [
@@ -80,16 +81,44 @@
                                     'show' => true,
                                     'disable' => false,
                                 ])
-                                 @include('components.form.input', [
+                                @include('components.form.input', [
                                     'class_group' => 'mb-3',
-                                    'field_name' => 'username',
-                                    'label' => 'NIM',
-                                    'value' => old('username', null),
-                                    'placeholder' => 'NIM',
+                                    'field_name' => 'nik',
+                                    'label' => 'nik',
+                                    'value' => old('nik', null),
+                                    'placeholder' => 'NIK',
                                     'show' => true,
                                     'disable' => false,
                                 ])
-        
+
+                                @include('components.form.select_option', [
+                                    'class_group' => 'mb-3',
+                                    'field_name' => 'gender',
+                                    'label' => 'gender',
+                                    'value' => old('gender'),
+                                    'placeholder' => 'Gender',
+                                    'show' => true,
+                                    'options' => [
+                                        ['label' => 'Laki-laki', 'value' => 'L'],
+                                        ['label' => 'Perempuan', 'value' => 'P'],
+                                    ],
+                                    'key_option_value' => 'value',
+                                    'key_option_label' => 'label',
+                                    'required' => true,
+                                    'disable' => false,
+                                    'accept' => null,
+                                ])
+
+                                @include('components.form.input', [
+                                    'class_group' => 'mb-3',
+                                    'field_name' => 'fakultas',
+                                    'label' => 'Fakultas',
+                                    'value' => old('fakultas', null),
+                                    'placeholder' => 'Fakultas',
+                                    'show' => true,
+                                    'disable' => false,
+                                ])
+
                                 @include('components.form.input', [
                                     'class_group' => 'mb-3',
                                     'field_name' => 'email',
@@ -112,7 +141,7 @@
                                     'show' => true,
                                     'disable' => false,
                                 ])
-        
+
                                 @include('components.form.input', [
                                     'class_group' => 'mb-3',
                                     'field_name' => 'password_confirm',
@@ -178,16 +207,17 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <script type="text/javascript">
-        function callbackThen(response){
+        function callbackThen(response) {
             // read HTTP status
             console.log(response.status);
 
             // read Promise object
-            response.json().then(function(data){
+            response.json().then(function(data) {
                 console.log(data);
             });
         }
-        function callbackCatch(error){
+
+        function callbackCatch(error) {
             console.error('Error:', error)
         }
     </script>

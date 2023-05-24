@@ -36,15 +36,16 @@
                             'show' => true,
                             'disabled' => true,
                         ])
-                        {{-- @include('components.form.text_area', [
+                        @include('components.form.input', [
                             'class_group' => 'mb-3',
-                            'field_name' => 'lokasi',
-                            'label' => 'Lokasi',
-                            'value' => old('lokasi', $row->lokasi),
-                            'placeholder' => 'Lokasi',
+                            'field_name' => 'address',
+                            'label' => 'Alamat',
+                            'value' => old('address', $row->address),
+                            'placeholder' => 'Alamat',
+                            'type' => 'text',
                             'show' => true,
                             'disabled' => true,
-                        ]) --}}
+                        ])
 
                     </div>
                     <div class="col-md-6">

@@ -45,7 +45,7 @@
                                 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home /</span> {{ $row->title }}</h4>
                             </div>
                             <div class="col-6 text-end">
-                                <a href="/list-room" class="btn btn-primary">Kembali</a>
+                                <a href="{{ url('/landing') }}" class="btn btn-primary">Kembali</a>
                             </div>
                         </div>
                         <!-- Layout Demo -->
@@ -66,8 +66,26 @@
                                                         @if ($images != null)
                                                             @foreach ($images as $kimg => $item)
                                                                 <div class="carousel-item {{ $kimg == 0 ? 'active' : null }}">
-                                                                <img class="d-block w-100" src="{{ url('files').'?_path='.$item->path }}" alt="First slide" />
+                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#backDropModal-{{ $item->uuid }}"><img class="d-block w-100" src="{{ url('files').'?_path='.$item->path }}" alt="First slide" /></a>
                                                                 </div>
+                                                                <div class="modal fade" id="backDropModal-{{ $item->uuid }}" data-bs-backdrop="static" tabindex="-1">
+                                                                    <div class="modal-dialog">
+                                                                      <form class="modal-content">
+                                                                        <div class="modal-header">
+                                                                          {{-- <h5 class="modal-title" id="backDropModalTitle">Modal title</h5> --}}
+                                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                          <div class="row">
+                                                                            <img class="d-block w-100" src="{{ url('files').'?_path='.$item->path }}" alt="First slide" />
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                      </form>
+                                                                    </div>
+                                                                  </div>
                                                             @endforeach
                                                         @else
                                                             <div class="carousel-item">
@@ -191,33 +209,33 @@
                                 </div>
                             </div>
  @php
-     $kamar = \App\Models\Room::where('asrama_id',$row->asrama_id)->where('id', '!=', $row->id)->get();
-    //  dd($kamar);
-
+     $kamar = \App\Models\Room::where('asrama_id',$row->asrama_id)->where('id', '!=', $row->id)->inRandomOrder()->limit(4)->get();
  @endphp                           
                             
                             <h3 class="mt-5">Kamar Lainya</h5>
                             <hr/>
-                            @if ($row->asrama->images != null)
-                            @foreach ($row->asrama->images as $item)
+                            @if (count($kamar) > 0)
+                            @foreach ($kamar as $item)
                             <div class="col-md-6 col-lg-3 mb-3">
                                 <div class="card h-100">
-                                    <img class="card-img-top" style="height: 250px;" src="{{ url('files').'?_path='.$item->path }}"
+                                    <img class="card-img-top" style="height: 250px;" src="{{ url('files').'?_path='.$item->asrama->image->path }}"
                                     alt="Card image cap" />
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $row->title }}</h5>
                                         <p class="card-text">
                                             @forelse ($row->RoomFasilitas as $item)
-                                                       {{ $item?->fasilitas?->title }},
-                                                    @empty
-                                                    Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini
-                                                    @endforelse 
+                                                {{ $item?->fasilitas?->title }},
+                                            @empty
+                                            Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini
+                                            @endforelse 
                                         </p>
                                         <a href="javascript:void(0)" class="btn btn-outline-primary">Lebih Detail</a>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
+                            @else
+                            Tidak Ada Data
                             @endif
                             
                         </div>

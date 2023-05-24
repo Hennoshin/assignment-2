@@ -27,11 +27,14 @@ class UserEditRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->route('id'), 'uuid')],
-            'username' => 'required',
+            'username' => 'nullable',
             'role' => 'required|exists:roles,name',
             'is_enabled' => 'required',
             'password' => '',
             'password_confirm' => '',
+            'nik' => 'nullable',
+            'fakultas' => 'nullable',
+            'gender' => 'required',
         ];
     }
 }

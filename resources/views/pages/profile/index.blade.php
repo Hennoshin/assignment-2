@@ -41,6 +41,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-4">
+                                <form autocomplete="off" action="{{ route('web.users.update', ['id' => $row->uuid]) }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('put')
+                                <input type="hidden" name="role" value="{{  $row->roles[0]->name }}">
+                                <input type="hidden" name="is_enabled" value="{{  $row->is_enabled }}">
+                                <input type="hidden" name="password" value="null">
                                 @include('components.form.input', [
                                     'class_group' => 'mb-3',
                                     'field_name' => 'name',
@@ -48,7 +55,7 @@
                                     'value' => old('name', $row->name),
                                     'placeholder' => 'Fullname',
                                     'show' => true,
-                                    'disabled' => true,
+                                    'disabled' => false,
                                 ])
 
                                 @include('components.form.input', [
@@ -59,7 +66,45 @@
                                     'placeholder' => 'email',
                                     'type' => 'email',
                                     'show' => true,
-                                    'disabled' => true,
+                                    'disabled' => false,
+                                ])
+
+                                @include('components.form.input', [
+                                    'class_group' => 'mb-3',
+                                    'field_name' => 'nik',
+                                    'label' => 'nik',
+                                    'value' => old('nik', $row->nik),
+                                    'placeholder' => 'NIK',
+                                    'show' => true,
+                                    'disable' => false,
+                                ])
+
+                                @include('components.form.select_option', [
+                                    'class_group' => 'mb-3',
+                                    'field_name' => 'gender',
+                                    'label' => 'gender',
+                                    'value' => old('gender', $row->gender),
+                                    'placeholder' => 'Gender',
+                                    'show' => true,
+                                    'options' => [
+                                        ['label' => 'Laki-laki', 'value' => 'L'],
+                                        ['label' => 'Perempuan', 'value' => 'P'],
+                                    ],
+                                    'key_option_value' => 'value',
+                                    'key_option_label' => 'label',
+                                    'required' => true,
+                                    'disable' => false,
+                                    'accept' => null,
+                                ])
+
+                                @include('components.form.input', [
+                                    'class_group' => 'mb-3',
+                                    'field_name' => 'fakultas',
+                                    'label' => 'Fakultas',
+                                    'value' => old('fakultas', $row->fakultas),
+                                    'placeholder' => 'Fakultas',
+                                    'show' => true,
+                                    'disable' => false,
                                 ])
 
                                 @include('components.form.input', [
@@ -77,11 +122,14 @@
                                     'field_name' => 'name',
                                     'label' => 'Roles',
                                     'value' => old('roles', $row->roles[0]->name),
-                                    'placeholder' => 'Fullname',
+                                    'placeholder' => 'roles',
                                     'show' => true,
                                     'disabled' => true,
                                 ])
-
+                                 <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </div>
+                                </form>
                             </div>
                             
                         </div>
@@ -98,7 +146,6 @@
                                 Logout
                             </span>
                         </div>
-                        <a href="#" class="btn btn-primary">Edit</a>
                     </div>
                 </div>
 

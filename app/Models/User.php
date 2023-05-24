@@ -29,7 +29,10 @@ class User extends Authenticatable
         'username',
         'is_enabled',
         'code_otp',
-        'asrama_id'
+        'asrama_id',
+        'nik',
+        'gender',
+        'fakultas',
     ];
 
     protected $guarded =['id', 'uuid'];

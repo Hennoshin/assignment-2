@@ -48,7 +48,10 @@ class UsersController extends BaseWebCrud
 
     public function __successUpdate()
     {
-        return $this->__successStore();
+        if(auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN)) {
+            return $this->__successStore();
+        }
+        return redirect(url()->previous());
     }
 
     public function __afterUpdate()
