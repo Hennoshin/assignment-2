@@ -5,7 +5,7 @@
         $module = 'Asrama';
     @endphp
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">{{ $module }} /</span> View {{ $row->title }}
+        <span class="text-muted fw-light">{{ $module }} /</span> Detail {{ $row->title }}
     </h4>
     <div class="card mb-4">
         <div class="card-body">
@@ -48,8 +48,8 @@
 
                     </div>
                     <div class="col-md-6">
-                        <img class="card-img-top" style="height: 450px;" src="{{ url('files').'?_path='.$row->image->path }}"
-                        alt="Card image cap" />
+                        <!-- <img class="card-img-top" style="height: 450px;" src="{{ url('files').'?_path='.$row->image->path }}"
+                        alt="Card image cap" /> -->
                     </div>
                 </div>
                 <div class="form-group">

@@ -25,7 +25,7 @@
                             'placeholder' => 'Nama Fasilitas',
                             'type' => 'text',
                             'show' => true,
-                            'disable' => false,
+                            'disabled' => true,
                         ])
 
                         @include('components.form.text_area', [
@@ -35,13 +35,13 @@
                             'value' => old('description', $row->description),
                             'placeholder' => 'Deskripsi',
                             'show' => true,
-                            'disable' => false,
+                            'disabled' => true,
                         ])
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a type="button" class="btn btn-secondary" href="{{ route('web.fasilitas.index') }}">Batal</a>
+                    <!-- <button type="submit" class="btn btn-primary">Simpan</button> -->
+                    <a type="button" class="btn btn-secondary" href="{{ route('web.fasilitas.index') }}">Kembali</a>
                 </div>
             </form>
         </div>

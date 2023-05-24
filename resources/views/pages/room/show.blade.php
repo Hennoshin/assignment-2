@@ -2,10 +2,10 @@
 
 @section('content')
     @php
-        $module = 'Tipe Kamar';
+        $module = 'Kamar';
     @endphp
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">{{ $module }} /</span> Detail {{ $row->title }}
+        <span class="text-muted fw-light">{{ $module }} /</span> Detail Kamar {{ $row->title }}
     </h4>
     <div class="card mb-4">
         <div class="card-body">
@@ -14,7 +14,7 @@
                 @csrf
                 @method('put')
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
 
                         @include('components.form.input', [
                             'class_group' => 'mb-3',
@@ -24,7 +24,7 @@
                             'placeholder' => 'Kamar',
                             'type' => 'text',
                             'show' => true,
-                            'disable' => false,
+                            'disabled' => true,
                         ])
 
                         {{-- @include('components.form.image', [
@@ -35,7 +35,7 @@
                             'placeholder' => 'Gambar',
                             'type' => 'text',
                             'show' => true,
-                            'disable' => false,
+                            'disabled' => true,
                             'multiple' => true,
                         ]) --}}
 
@@ -59,7 +59,7 @@
                             'key_option_label' => 'title',
                             'show' => true,
                             'accept' => null,
-                            'disable' => false,
+                            'disabled' => true,
                         ])
 
                         @include('components.form.select_option', [
@@ -73,7 +73,7 @@
                             'key_option_label' => 'title',
                             'show' => true,
                             'accept' => null,
-                            'disable' => false,
+                            'disabled' => true,
                         ])
                         @php
                             $resFas = [];
@@ -93,7 +93,7 @@
                             'key_option_label' => 'title',
                             'show' => true,
                             'accept' => null,
-                            'disable' => false,
+                            'disabled' => true,
                         ])
 
                         @include('components.form.number', [
@@ -104,7 +104,7 @@
                             'placeholder' => 'Harga Perhari',
                             'type' => 'text',
                             'show' => true,
-                            'disable' => false,
+                            'disabled' => true,
                             'min' => 0,
                             'max' => 99999999999,
                             'accept' => 'disable-minus',
@@ -119,7 +119,7 @@
                             'placeholder' => 'Harga Per Bulan',
                             'type' => 'text',
                             'show' => true,
-                            'disable' => false,
+                            'disabled' => true,
                             'min' => 0,
                             'max' => 99999999999,
                             'accept' => 'disable-minus',
@@ -134,7 +134,7 @@
                             'placeholder' => 'Harga Per Semester',
                             'type' => 'text',
                             'show' => true,
-                            'disable' => false,
+                            'disabled' => true,
                             'min' => 0,
                             'max' => 99999999999,
                             'accept' => 'disable-minus',
@@ -157,13 +157,13 @@
                             'key_option_label' => 'label',
                             'show' => true,
                             'accept' => null,
-                            'disable' => false,
+                            'disabled' => true,
                         ]) --}}
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a type="button" class="btn btn-secondary" href="{{ route('web.room.index') }}">Batal</a>
+                    <!-- <button type="submit" class="btn btn-primary">Simpan</button> -->
+                    <a type="button" class="btn btn-secondary" href="{{ route('web.room.index') }}">Kembali</a>
                 </div>
             </form>
         </div>

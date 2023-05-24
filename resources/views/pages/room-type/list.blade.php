@@ -46,7 +46,7 @@
                             <td>{{ $item->description }}</td>
                             <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                             <td>
-                                @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
+                                @if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
@@ -71,7 +71,7 @@
                                             Delete</a>
                                     </div>
                                 </div>
-                                @elseif(auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
+                                @elseif(auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
@@ -100,7 +100,7 @@
             </div>
         </div>
     </div>
-    @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN) || auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
+    @if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
     <div class="buy-now">
         <a href="{{ route('web.room-type.create') }}" class="btn btn-danger btn-buy-now">Tambah {{ $module }}</a>
     </div>
