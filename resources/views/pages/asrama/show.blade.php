@@ -49,8 +49,8 @@
 
                     </div>
                     <div class="col-md-6">
-                        <!-- <img class="card-img-top" style="height: 450px;" src="{{ url('files').'?_path='.$row->image->path }}"
-                        alt="Card image cap" /> -->
+                        <img class="card-img-top" style="height: 450px;" src="{{ url('files').'?_path='.$row->image->path }}"
+                        alt="Card image cap" />
                     </div>
                 </div>
                 <div class="form-group">
