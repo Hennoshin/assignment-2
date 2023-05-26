@@ -41,16 +41,19 @@ class RoomTypeController extends BaseWebCrud
     public function __beforeStore()
     {
         $uploadData = [];
-        foreach ($this->requestData->file('images') as $key => $value) {
-            $upload = new UploadService(
-                $value,
-                FileConst::IMAGE_ROOM_TYPE_PATH,
-                (string) Str::uuid()
-            );
+        if($this->requestData->hasFile('images')){
 
-            $upload->uploadResize(300);
-            $uploadData[] = $upload;
-       }
+            foreach ($this->requestData->file('images') as $key => $value) {
+                $upload = new UploadService(
+                    $value,
+                    FileConst::IMAGE_ROOM_TYPE_PATH,
+                    (string) Str::uuid()
+                );
+    
+                $upload->uploadResize(300);
+                $uploadData[] = $upload;
+           }
+        }
 
         $this->uploaded = $uploadData;
     }
