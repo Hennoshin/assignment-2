@@ -80,6 +80,7 @@
                                     <td>{{ date('d-m-Y', strtotime($item->start_date)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->end_date)) }}</td>
                                     <td>
+                                        @if(auth()->user()->hasRole(\App\Constants\RoleConst::STUDENT))
                                         <div class="dropdown">
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                                 data-bs-toggle="dropdown"><i
@@ -89,6 +90,7 @@
                                                         class="bx bx-edit-alt me-1"></i> Proses Pembayaran</a>
                                             </div>
                                         </div>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -135,7 +137,7 @@
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" target="_blank" href="{{ url('files').'?_path='.$item->image->path }}"><i
                                                         class="bx bx-show me-1"></i>Bukti Bayar</a>
-                                                        @if (auth()->user()->hasRole(\App\Constants\RoleConst::SUPER_ADMIN))             
+                                                        @if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))             
                                                         <a class="dropdown-item" href="{{ route('web.pesanan.verifikasi', ['id' => $item->uuid]) }}"><i
                                                                     class="bx bx-edit-alt me-1"></i> Verifikasi</a>
                                                         <a class="dropdown-item" href="{{ route('web.pesanan.canceled',  ['id' => $item->uuid]) }}"><i

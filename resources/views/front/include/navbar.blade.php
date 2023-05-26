@@ -33,6 +33,10 @@
                 </ul>
                 {{-- <a href="#" class="navbar-brand">Cari Asrama</a> --}}
             </li>
+            
+            <!-- <li class="nav-item lh-1 me-3">
+                <a href="{{ url('/list-room') }}" class="navbar-brand">Cari Kamar</a>
+            </li> -->
 
             <li class="nav-item lh-1 me-3">
                 <a href="{{ url('/pusat-bantuan') }}" class="navbar-brand">Pusat Bantuan</a>
