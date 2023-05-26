@@ -29,7 +29,11 @@ class AsramaRequest extends FormRequest
             'description' => 'nullable',
             'lokasi' => 'nullable',
             'images' => 'required',
-            'address' => 'nullable'
+            'address' => 'nullable',
+            'no_rekening' => 'required',
+            'no_kontak' => 'required',
+            'asrama_role' => 'nullable',
+            'informasi_lainnya' => 'nullable'
         ];
     }
 }

@@ -13,7 +13,7 @@
             <form method="post" action="{{ route('web.asrama.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
 
                         @include('components.form.input', [
                             'class_group' => 'mb-3',
@@ -67,6 +67,52 @@
                             'show' => true,
                             'disable' => false,
                             'multiple' => true,
+                        ])
+                    </div>
+                    <div class="col-md-6">
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'no_kontak',
+                            'label' => 'Nomor Kontak',
+                            'value' => old('no_kontak', null),
+                            'placeholder' => 'No Kontak Asrama',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                        ])
+
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'no_rekening',
+                            'label' => 'Akun Rekening Pembayaran',
+                            'value' => old('no_rekening', null),
+                            'placeholder' => 'Akun Rekening Pembayaran',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                        ])
+                    </div>
+                    <div class="col-md-12">
+                        @include('components.form.html', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'asrama_role',
+                            'label' => 'Aturan',
+                            'value' => old('asrama_role', null),
+                            'placeholder' => 'Aturan',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                        ])
+
+                        @include('components.form.html', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'informasi_lainnya',
+                            'label' => 'Informasi Lainnya',
+                            'value' => old('informasi_lainnya', null),
+                            'placeholder' => 'Informasi Lainnya',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
                         ])
                     </div>
                 </div>
