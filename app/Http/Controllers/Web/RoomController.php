@@ -97,11 +97,11 @@ class RoomController extends BaseWebCrud
             }
         }
 
-        if (!empty($this->uploaded)) {
-            foreach ($this->uploaded as $key => $value) {
-                $value->saveFile($this->row->image(), ['slug' =>  FileConst::IMAGE_ROOM_SLUG]);
-            }
-        }
+        // if (!empty($this->uploaded)) {
+        //     foreach ($this->uploaded as $key => $value) {
+        //         $value->saveFile($this->row->image(), ['slug' =>  FileConst::IMAGE_ROOM_SLUG]);
+        //     }
+        // }
     }
 
     public function __prepareDataUpdate($data)
