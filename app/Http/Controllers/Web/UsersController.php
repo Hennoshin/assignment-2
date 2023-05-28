@@ -22,7 +22,10 @@ class UsersController extends BaseWebCrud
 
     public function __prepareDataStore($data) 
     {
-        $data['asrama_id'] = Asramas::getId($data['asrama_id']);
+        if($data['asrama_id'] != null){
+
+            $data['asrama_id'] = Asramas::getId($data['asrama_id']);
+        }
         $data['password'] = Hash::make($data['password']);
         return $data;
     }
