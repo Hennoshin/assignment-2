@@ -26,7 +26,36 @@
                                 {!! $row->lokasi !!}
                             </div>
                         </div>
-                        <h5 class="pb-1 mt-3 mb-3">List Room</h5>
+                        <h4 class="pb-1 mt-4 mb-4">{{ $row->title }}</h4>
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="row md-5">
+                                    <div class="col-12">
+                                      <h5 class="card-title">Aturan :</h5>
+                                      <p class="card-text">{!! $row->asrama_role !!}</p>
+                                    </div>
+                                    <div class="col-12">
+                                      <h5 class="card-title">Informasi Lainnya :</h5>
+                                      <p class="card-text">{!! $row->informasi_lainnya !!}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row mt-3">
+                                    <div class="col-4">
+                                      <h5 class="card-title">Alamat</h5>
+                                      <p class="card-text">{{ $row->address }}</p>
+                                    </div>
+                                    <div class="col-4">
+                                      <h5 class="card-title">Kontak</h5>
+                                      <p class="card-text">{{ $row->no_kontak }}</p>
+                                    </div>
+                                    <div class="col-4">
+                                      <h5 class="card-title">Rekening</h5>
+                                      <p class="card-text">{{ $row->no_rekening }}</p>
+                                    </div>
+                                </div>
+                            </div>  
+                          </div>
                         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="javascript:void(0)"><i class='bx bx-filter-alt'></i> Filter</a>

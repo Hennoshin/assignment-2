@@ -135,9 +135,10 @@
                                                 data-bs-toggle="dropdown"><i
                                                     class="bx bx-dots-vertical-rounded"></i></button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" target="_blank" href="{{ url('files').'?_path='.$item->image->path }}"><i
-                                                        class="bx bx-show me-1"></i>Bukti Bayar</a>
-                                                        @if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))             
+                                                <a class="dropdown-item" target="_blank" href="{{ url('files').'?_path='.$item->image->path }}"><i class='bx bx-file me-1'></i>Bukti Bayar</a>
+                                                        @if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF))
+                                                        <a class="dropdown-item" href="{{ route('web.pesanan.edit', ['id' => $item->uuid]) }}"><i
+                                                            class="bx bx-show me-1"></i>Detail</a>             
                                                         <a class="dropdown-item" href="{{ route('web.pesanan.verifikasi', ['id' => $item->uuid]) }}"><i
                                                                     class="bx bx-edit-alt me-1"></i> Verifikasi</a>
                                                         <a class="dropdown-item" href="{{ route('web.pesanan.canceled',  ['id' => $item->uuid]) }}"><i

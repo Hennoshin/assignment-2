@@ -105,23 +105,26 @@
                                 $asrama = \App\Models\Asramas::get();
                             @endphp
                             @foreach ($asrama as $item)
-                                <div class="col-md-6">
+                                <div class="col-md-6" href="">
                                     <div class="card mb-3">
                                         <div class="row g-0">
                                             <div class="col-md-4">
+                                                <a href="{{ route('web.homepage.detail-asrama.front',['id'=>$item->uuid]) }}">
                                                 @if(isset($item->image->path))
                                                 <img class="card-img card-img-left" src="{{ url('files').'?_path='.$item->image->path }}" style="width: 180px;" alt="Card image" />
                                                 @else
                                                 <img class="card-img card-img-right" src="../assets/img/elements/17.jpg"  style="width: 180px;" alt="Card image" />
                                                 @endif
+                                            </a>
                                             </div>
                                             <div class="col-md-8">
                                             <div class="card-body">
-                                                <h5 class="card-title">{{ $item->title }}</h5>
+                                                <a href="{{ route('web.homepage.detail-asrama.front',['id'=>$item->uuid]) }}">
+                                                <h5 class="card-title" href="">{{ $item->title }}</h5>
                                                 <p class="card-text">
                                                     {{ $item->description }}
                                                 {{-- Merupakan Asrama yang terletak di sekitar kawasan kampus Universitas Riau, yang memiliki fasilitas yang nyaman untuk penginapan untuk Mahasiswa/i Universitas Riau. --}}
-                                                </p>
+                                                </p></a>
                                                 {{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
                                             </div>
                                             </div>

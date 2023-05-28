@@ -47,10 +47,36 @@
                             'disabled' => true,
                         ])
 
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'no_kontak',
+                            'label' => 'Nomor Kontak',
+                            'value' => old('no_kontak', $row->no_kontak),
+                            'placeholder' => 'No Kontak Asrama',
+                            'type' => 'text',
+                            'show' => true,
+                            'disabled' => true,
+                        ])
+
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'no_rekening',
+                            'label' => 'Akun Rekening Pembayaran',
+                            'value' => old('no_rekening', $row->no_rekening),
+                            'placeholder' => 'Akun Rekening Pembayaran',
+                            'type' => 'text',
+                            'show' => true,
+                            'disabled' => true,
+                        ])
+
+                       <p><b>Aturan : </b></p>{!!  $row->asrama_role !!}
+                       
+                       <p><b>Informasi Lainnya : </b></p>{!!  $row->informasi_lainnya !!}
+
                     </div>
                     <div class="col-md-6">
-                        <img class="card-img-top" style="height: 450px;" src="{{ url('files').'?_path='.$row->image->path }}"
-                        alt="Card image cap" />
+                        <img class="card-img-top" style="height: 450px;"
+                            src="{{ url('files') . '?_path=' . $row->image->path }}" alt="Card image cap" />
                     </div>
                 </div>
                 <div class="form-group">
