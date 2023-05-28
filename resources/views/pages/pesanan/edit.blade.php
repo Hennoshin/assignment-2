@@ -192,7 +192,7 @@
                             'class_group' => 'mb-3',
                             'field_name' => 'ammount',
                             'label' => 'Total Dibayarkan',
-                            'value' => old('ammount', number_format($row->ammount, 2, '.', ',')),
+                            'value' => old('ammount', number_format($row->payment->ammount, 2, '.', ',')),
                             'placeholder' => 'Total Dibayarkan',
                             'type' => 'text',
                             'show' => true,

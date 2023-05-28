@@ -27,7 +27,7 @@
                             'disable' => false,
                         ])
 
-                        {{-- @include('components.form.image', [
+                        @include('components.form.image', [
                             'class_group' => 'mb-3',
                             'field_name' => 'images[]',
                             'label' => 'Gambar',
@@ -37,7 +37,7 @@
                             'show' => true,
                             'disable' => false,
                             'multiple' => true,
-                        ]) --}}
+                        ])
 
                         @php
                             $roomType = \App\Models\RoomType::get();

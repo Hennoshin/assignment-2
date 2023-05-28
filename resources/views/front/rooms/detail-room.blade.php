@@ -18,13 +18,14 @@
         }
 
         $asramaImages = [];
-        if (!empty($row->asrama->images)) {
-            foreach ($row->asrama->images as $key => $value) {
-                $asramaImages[] = $value;
-            }
-        }
+        // if (!empty($row->asrama->images)) {
+        //     foreach ($row->asrama->images as $key => $value) {
+        //         $asramaImages[] = $value;
+        //     }
+        // }
         
         $images = array_merge($roomImages, $roomTypeImages, $asramaImages);
+        // dd($images);
     @endphp
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar  layout-without-menu">

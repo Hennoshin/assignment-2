@@ -65,7 +65,7 @@
                                     <th>Tanggal Booking</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
-                                    <th>Actions</th>
+                                    <th>Prosess</th>
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
