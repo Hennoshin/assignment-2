@@ -65,4 +65,9 @@ class UsersController extends BaseWebCrud
     public function export() {
         return Excel::download(new UsersExport, 'Users-'.date('YmdHis').'.xlsx');
     }
+
+    public function __beforeDestroy() {
+        $data = $this->row;
+        $data->update(['nik' => 'deleted-'.date('dmyHis'), 'email' => $this->row->email.'-deleted-'.date('dmyHis')]);
+    }
 }

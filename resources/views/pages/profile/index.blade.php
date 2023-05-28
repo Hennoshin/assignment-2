@@ -68,7 +68,7 @@
                                     'show' => true,
                                     'disabled' => false,
                                 ])
-
+                                 @if (auth()->user()->hasRole(\App\Constants\RoleConst::STUDENT))
                                 @include('components.form.input', [
                                     'class_group' => 'mb-3',
                                     'field_name' => 'nik',
@@ -78,6 +78,17 @@
                                     'show' => true,
                                     'disable' => false,
                                 ])
+
+                                @include('components.form.input', [
+                                    'class_group' => 'mb-3',
+                                    'field_name' => 'fakultas',
+                                    'label' => 'Fakultas',
+                                    'value' => old('fakultas', $row->fakultas),
+                                    'placeholder' => 'Fakultas',
+                                    'show' => true,
+                                    'disable' => false,
+                                ])
+                                @endif
 
                                 @include('components.form.select_option', [
                                     'class_group' => 'mb-3',
@@ -97,15 +108,6 @@
                                     'accept' => null,
                                 ])
 
-                                @include('components.form.input', [
-                                    'class_group' => 'mb-3',
-                                    'field_name' => 'fakultas',
-                                    'label' => 'Fakultas',
-                                    'value' => old('fakultas', $row->fakultas),
-                                    'placeholder' => 'Fakultas',
-                                    'show' => true,
-                                    'disable' => false,
-                                ])
 
                                 @include('components.form.input', [
                                     'class_group' => 'mb-3',

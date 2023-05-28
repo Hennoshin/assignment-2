@@ -221,10 +221,10 @@
                                     <img class="card-img-top" style="height: 250px;" src="{{ url('files').'?_path='.$item->asrama->image->path }}"
                                     alt="Card image cap" />
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $row->title }}</h5>
+                                        <h5 class="card-title">{{ $item->title }}</h5>
                                         <p class="card-text">
-                                            @forelse ($row->RoomFasilitas as $item)
-                                                {{ $item?->fasilitas?->title }},
+                                            @forelse ($item->RoomFasilitas as $i)
+                                                {{ $i?->fasilitas?->title }},
                                             @empty
                                             Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini
                                             @endforelse 

@@ -166,8 +166,13 @@
             $('#role').on('change', function() {
                 if (this.value == 'student' || this.value == 'super-admin') {
                     $('#asrama_id').prop('disabled', 'disabled')
+                    $('#nik').prop('disabled', false)
+                    $('#fakultas').prop('disabled', false)
                 } else {
+                    $('#nik').prop('disabled', 'disabled')
+                    $('#fakultas').prop('disabled', 'disabled')
                     $('#asrama_id').prop('disabled', false)
+                   
                 }
             });
         </script>

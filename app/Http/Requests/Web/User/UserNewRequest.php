@@ -33,8 +33,8 @@ class UserNewRequest extends FormRequest
             'asrama_id' => 'nullable',
             'password' => 'required|min:6',
             'password_confirm' => 'required|min:6|same:password',
-            'nik' => 'nullable',
-            'fakultas' => 'nullable',
+            'nik' =>  'required_if:role,==,'.\App\Constants\RoleConst::STUDENT,
+            'fakultas' => 'required_if:role,==,'.\App\Constants\RoleConst::STUDENT,
             'gender' => 'required',
         ];
     }

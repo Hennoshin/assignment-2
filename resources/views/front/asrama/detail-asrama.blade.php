@@ -30,13 +30,15 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="row md-5">
-                                    <div class="col-12">
+                                    <div class="col-8">
                                       <h5 class="card-title">Aturan :</h5>
                                       <p class="card-text">{!! $row->asrama_role !!}</p>
-                                    </div>
-                                    <div class="col-12">
                                       <h5 class="card-title">Informasi Lainnya :</h5>
                                       <p class="card-text">{!! $row->informasi_lainnya !!}</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="card-img-top" style="width: 250px;"
+                                            src="{{ url('files') . '?_path=' . $row->image->path }}" alt="Card image cap" />
                                     </div>
                                 </div>
                                 <hr>
