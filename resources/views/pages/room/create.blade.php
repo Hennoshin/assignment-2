@@ -5,7 +5,7 @@
         $module = 'Kamar';
     @endphp
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">{{ $module }} /</span> Tambah Tipe Kamar
+        <span class="text-muted fw-light">{{ $module }} /</span> Tambah Kamar
     </h4>
     <div class="card mb-4">
         <div class="card-body">
