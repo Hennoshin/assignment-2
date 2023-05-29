@@ -72,10 +72,10 @@
                                             <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                                 id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                                 aria-expanded="false">
-                                                {{ request('room_type') == null ? 'Tipe Kamar' : \App\Models\RoomType::where('uuid', request('room_type'))->first()->title }}
+                                                {{ request('room_type') == null ? 'Tipe Kamar' : \App\Models\RoomType::where('uuid', request('room_type'))->where('asrama_id', $row->id)->first()->title }}
                                             </a>
                                             @php
-                                                $roomType = \App\Models\RoomType::get();
+                                                $roomType = \App\Models\RoomType::where('asrama_id', $row->id)->get();
                                             @endphp
                                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                 <li><a class="dropdown-item" href="{{ url()->current() }}">{{ "Semua Tipe Kamar" }}</a></li>

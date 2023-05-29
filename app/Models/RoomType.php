@@ -39,4 +39,9 @@ class RoomType extends Model
         return $this->morphMany(FileinfoPivot::class, 'fileable')->where('slug', FileConst::IMAGE_ROOM_TYPE_SLUG);
     }
 
+    public function Asrama() 
+    {
+        return $this->belongsTo(\App\Models\Asramas::class, 'asrama_id');
+    }
+
 }

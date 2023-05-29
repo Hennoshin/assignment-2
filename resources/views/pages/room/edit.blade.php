@@ -40,11 +40,12 @@
                         ]) --}}
 
                         @php
-                            $roomType = \App\Models\RoomType::get();
                             if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF)) {
                                 $asrama = \App\Models\Asramas::where('id', auth()->user()->asrama_id)->get();
+                                $roomType = \App\Models\RoomType::where('asrama_id', auth()->user()->asrama_id)->get();
                             } else {
                                 $asrama = \App\Models\Asramas::get();
+                                $roomType = \App\Models\RoomType::get();
                             }
                             $fasilitas = \App\Models\Fasilitas::get();
                         @endphp

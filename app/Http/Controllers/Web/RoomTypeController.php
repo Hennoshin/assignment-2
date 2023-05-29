@@ -19,8 +19,17 @@ class RoomTypeController extends BaseWebCrud
 
     public $uploaded = [];
 
+    public function __prepareQueryList($query)
+    {
+        if (auth()->user()->hasRole(\App\Constants\RoleConst::STAFF)) {
+            $query = $query->where('asrama_id', auth()->user()->asrama_id);
+        }
+        return $query;
+    }
+
     public function __prepareDataStore($data) 
     {
+        $data['asrama_id'] = auth()->user()->asrama_id;
         return $data;
     }
     public function __successStore()

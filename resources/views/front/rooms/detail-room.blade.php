@@ -6,9 +6,9 @@
 <body>
     @php
         $roomImages = [];
-        foreach ($row->images as $key => $value) {
-            $roomImages[] = $value;
-        }
+        // foreach ($row->images as $key => $value) {
+        //     $roomImages[] = $value;
+        // }
 
         $roomTypeImages = [];
         if (!empty($row->roomType->images)) {
@@ -18,11 +18,11 @@
         }
 
         $asramaImages = [];
-        // if (!empty($row->asrama->images)) {
-        //     foreach ($row->asrama->images as $key => $value) {
-        //         $asramaImages[] = $value;
-        //     }
-        // }
+        if (!empty($row->asrama->images)) {
+            foreach ($row->asrama->images as $key => $value) {
+                $asramaImages[] = $value;
+            }
+        }
         
         $images = array_merge($roomImages, $roomTypeImages, $asramaImages);
         // dd($images);
