@@ -43,7 +43,7 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
                             <div class="col-6">
-                                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home /</span> {{ $row->title }}</h4>
+                                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ $row->asrama->title }} /</span> {{ $row->title }}</h4>
                             </div>
                             <div class="col-6 text-end">
                                 <a href="{{ url('/landing') }}" class="btn btn-primary">Kembali</a>
@@ -219,7 +219,7 @@
                             @foreach ($kamar as $item)
                             <div class="col-md-6 col-lg-3 mb-3">
                                 <div class="card h-100">
-                                    <img class="card-img-top" style="height: 250px;" src="{{ url('files').'?_path='.$item->asrama->image->path }}"
+                                    <img class="card-img-top" style="height: 250px;" src="{{ url('files').'?_path='.$item->RoomType->image->path }}"
                                     alt="Card image cap" />
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $item->title }}</h5>
@@ -230,7 +230,7 @@
                                             Tidak Ada Fasilitas, Hubungi Administrator untuk informasi lebih tentang Kamar ini
                                             @endforelse 
                                         </p>
-                                        <a href="javascript:void(0)" class="btn btn-outline-primary">Lebih Detail</a>
+                                        <a href="{{ route('web.homepage.room-detail.front', ['id' => $item->uuid]) }}" class="btn btn-outline-primary">Lebih Detail</a>
                                     </div>
                                 </div>
                             </div>

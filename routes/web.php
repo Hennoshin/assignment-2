@@ -144,6 +144,7 @@ Route::namespace('App\Http\Controllers\Web')
                 Route::put('/pesanan/{id}', [PesananController::class, 'update'])->name('web.pesanan.update');
                 Route::get('/pesanan/{id}/verifikasi', [PesananController::class, 'verifikasi'])->name('web.pesanan.verifikasi');
                 Route::get('/pesanan/{id}/cancel', [PesananController::class, 'rejected'])->name('web.pesanan.canceled');
+                Route::get('/pesanan/{id}/delete', [PesananController::class, 'destroy'])->name('web.pesanan.destroy');
 
                 Route::get('/pesanan-saya', [PesananController::class, 'index'])->name('web.pesanan-saya.index');
 

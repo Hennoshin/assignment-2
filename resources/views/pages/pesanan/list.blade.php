@@ -88,6 +88,8 @@
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="{{ route('web.pesanan.edit', ['id' => $item->uuid]) }}"><i
                                                         class="bx bx-edit-alt me-1"></i> Proses Pembayaran</a>
+                                                <a class="dropdown-item" href="{{ route('web.pesanan.destroy',  ['id' => $item->uuid]) }}"><i
+                                                    class="bx bx-window-close me-1"></i> Batalkan Pemesanan</a>
                                             </div>
                                         </div>
                                         @endif
