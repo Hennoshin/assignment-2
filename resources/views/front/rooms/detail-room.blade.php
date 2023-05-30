@@ -18,11 +18,11 @@
         }
 
         $asramaImages = [];
-        if (!empty($row->asrama->images)) {
-            foreach ($row->asrama->images as $key => $value) {
-                $asramaImages[] = $value;
-            }
-        }
+        // if (!empty($row->asrama->images)) {
+        //     foreach ($row->asrama->images as $key => $value) {
+        //         $asramaImages[] = $value;
+        //     }
+        // }
         
         $images = array_merge($roomImages, $roomTypeImages, $asramaImages);
         // dd($images);
