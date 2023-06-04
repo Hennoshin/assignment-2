@@ -80,17 +80,29 @@
                             'show' => true,
                             'disable' => false,
                         ])
-
+                         <div class="col-md-6">
                         @include('components.form.input', [
                             'class_group' => 'mb-3',
-                            'field_name' => 'no_rekening',
-                            'label' => 'Akun Rekening Pembayaran',
-                            'value' => old('no_rekening', null),
-                            'placeholder' => 'Akun Rekening Pembayaran',
+                            'field_name' => 'bank',
+                            'label' => 'Nama Bank',
+                            'value' => old('bank', null),
+                            'placeholder' => 'Nama Bank',
                             'type' => 'text',
                             'show' => true,
                             'disable' => false,
                         ])
+
+                        @include('components.form.input', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'no_rekening',
+                            'label' => 'Nomor Rekening',
+                            'value' => old('no_rekening', null),
+                            'placeholder' => 'Nomor Rekening',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                        ])
+                         </div>
                     </div>
                     <div class="col-md-12">
                         @include('components.form.html', [

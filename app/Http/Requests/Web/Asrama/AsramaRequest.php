@@ -33,7 +33,8 @@ class AsramaRequest extends FormRequest
             'no_rekening' => 'required',
             'no_kontak' => 'required',
             'asrama_role' => 'nullable',
-            'informasi_lainnya' => 'nullable'
+            'informasi_lainnya' => 'nullable',
+            'bank' => 'required'
         ];
     }
 }

@@ -70,17 +70,32 @@
                             'max' => 9999999999,
                             'accept' => 'disable-minus',
                         ])
-
-                        @include('components.form.input', [
-                            'class_group' => 'mb-3',
-                            'field_name' => 'no_rekening',
-                            'label' => 'Akun Rekening Pembayaran',
-                            'value' => old('no_rekening', $row->Room->Asrama->no_rekening),
-                            'placeholder' => 'Akun Rekening Pembayaran',
-                            'type' => 'text',
-                            'show' => true,
-                            'disabled' => true,
-                        ])
+                        <div class="row">
+                            <div class="col-md-6">
+                                @include('components.form.input', [
+                                    'class_group' => 'mb-3',
+                                    'field_name' => 'bank',
+                                    'label' => 'Nama Bank',
+                                    'value' => old('no_rekening', $row->Room->Asrama->bank),
+                                    'placeholder' => 'Nama Bank',
+                                    'type' => 'text',
+                                    'show' => true,
+                                    'disabled' => true,
+                                ])
+                            </div>
+                            <div class="col-md-6">
+                                @include('components.form.input', [
+                                    'class_group' => 'mb-3',
+                                    'field_name' => 'no_rekening',
+                                    'label' => 'Nomor Rekening',
+                                    'value' => old('no_rekening', $row->Room->Asrama->no_rekening),
+                                    'placeholder' => 'Nomor Rekening',
+                                    'type' => 'text',
+                                    'show' => true,
+                                    'disabled' => true,
+                                ])
+                            </div>
+                        </div>
 
                         @include('components.form.input', [
                             'class_group' => 'mb-3',

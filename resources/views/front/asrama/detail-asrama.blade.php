@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="col-4">
                                       <h5 class="card-title">Rekening</h5>
-                                      <p class="card-text">{{ $row->no_rekening }}</p>
+                                      <p class="card-text">{{ $row->bank }} : {{ $row->no_rekening }}</p>
                                     </div>
                                 </div>
                             </div>  
