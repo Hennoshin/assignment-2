@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Web\BeritaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Auth\LoginController;
 use App\Http\Controllers\Web\UsersController;
@@ -94,14 +93,6 @@ Route::namespace('App\Http\Controllers\Web')
                     Route::delete('/{id}', [UsersController::class, 'destroy'])->name('web.users.delete');
                 });
 
-                Route::group(['prefix' => 'informations'], function () {
-                    Route::get('/', [BeritaController::class, 'index'])->name('web.informations.index');
-                    Route::get('/create', [BeritaController::class, 'create'])->name('web.informations.create');
-                    Route::post('/', [BeritaController::class, 'store'])->name('web.informations.store');
-                    Route::get('/{id}/edit', [BeritaController::class, 'edit'])->name('web.informations.edit');
-                    Route::put('/{id}', [BeritaController::class, 'update'])->name('web.informations.update');
-                    Route::delete('/{id}', [BeritaController::class, 'destroy'])->name('web.informations.delete');
-                });
                 Route::group(['prefix' => 'asrama'], function () {
                     Route::get('/', [AsramaController::class, 'index'])->name('web.asrama.index');
                     Route::get('/create', [AsramaController::class, 'create'])->name('web.asrama.create');
