@@ -117,16 +117,16 @@
                                 }
                                 $images = array_merge($roomImages, $roomTypeImages, $asramaImages);
                             @endphp    
-                            <div class="col-md-12">
+                            <div class="col-md-12 mb-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-3">
                                                 @if(empty($images))
-                                                <img class="card-img-top" style="width: 100%" src="../assets/img/elements/kamar.jpg"
+                                                <img class="card-img-top" style="width: 300px; height: 218px;" src="../assets/img/elements/kamar.jpg"
                                                     alt="Card image cap" />
                                                 @else
-                                                <img class="card-img-top" style="width: 100%" src="{{ url('files').'?_path='.$images[0]->path }}"
+                                                <img class="card-img-top" style="width: 300px; height: 218px;" src="{{ url('files').'?_path='.$images[0]->path }}"
                                                     alt="Card image cap" />
                                                 @endif
                                             </div>
