@@ -85,7 +85,6 @@ Route::namespace('App\Http\Controllers\Web')
 
                 Route::group(['prefix' => 'users'], function () {
                     Route::get('/', [UsersController::class, 'index'])->name('web.users.index');
-                    Route::get('/export', [UsersController::class, 'export'])->name('web.users.export');
                     Route::get('/create', [UsersController::class, 'create'])->name('web.users.create');
                     Route::post('/', [UsersController::class, 'store'])->name('web.users.store');
                     Route::get('/{id}/edit', [UsersController::class, 'edit'])->name('web.users.edit');

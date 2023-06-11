@@ -15,7 +15,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class UsersController extends BaseWebCrud
 {
     public $model = User::class;
-    public $viewPath = 'pages.users';
+    public $viewPath = 'pages.users'; // tampilan
 
     public $storeValidator = UserNewRequest::class;
     public $updateValidator = UserEditRequest::class;
