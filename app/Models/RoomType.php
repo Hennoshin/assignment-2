@@ -44,4 +44,9 @@ class RoomType extends Model
         return $this->belongsTo(\App\Models\Asramas::class, 'asrama_id');
     }
 
+    public function Rooms()
+    {
+        return $this->hasMany(\App\Models\Room::class, 'room_type_id');
+    }
+
 }

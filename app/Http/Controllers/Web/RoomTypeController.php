@@ -91,5 +91,13 @@ class RoomTypeController extends BaseWebCrud
                 $value->saveFile($this->row->image(), ['slug' =>  FileConst::IMAGE_ROOM_TYPE_SLUG]);
             }
         }
+
+        $rooms = $this->row->Rooms;
+        foreach ($rooms as $value) {
+            $row = $value;
+            if($value->Bookings()->where('status', '!=', \App\Models\Booking::FAILED)->count() == 0) {
+                $row->update(['stock', $this->requestData->input('total_bed')]);
+            }
+        }
     }
 }

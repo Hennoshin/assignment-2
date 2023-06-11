@@ -61,6 +61,11 @@ class LandingPageController extends BaseWebCrud
             return redirect(url()->previous());
         }
         $room = Room::where('uuid', $input['room_id'])->first();
+
+        if($room->stock == 0 || $room->stock == null || $room->RoomType->total_bed == null) {
+            return redirect(url()->previous());
+        }
+
         $input['room_id'] = $room->id;
         $input['user_id'] = auth()->user()->id;
         $lengthOfStay = (int) $input['lenght_of_stay'];
@@ -70,13 +75,16 @@ class LandingPageController extends BaseWebCrud
         if ($lengthOfStay == 0) {
             return redirect(url()->previous());
         }
-        //    if($input['type_harga'] == 'perhari') {
-        //         $input['end_date'] = date('Y-m-d',strtotime($input['start_date'] . "+1 days"));
-        //     } elseif($input['type_harga'] == 'perbulan') {
-        //         $input['end_date'] = date('Y-m-d',strtotime($input['start_date'] . "+30 days"));
-        //     } elseif($input['type_harga'] == 'persemester') {
-        //         $input['end_date'] = date('Y-m-d',strtotime($input['start_date'] . "+180 days"));
-        //     }
+        
+        if($room->stock == null && $room->RoomType->total_bed != null) {
+            $updateStock = $room;
+            $updateStock = $updateStock->update(['stock' => $room->RoomType->total_bed]);
+            $room = Room::where('uuid', $input['room_id'])->first();
+        }
+
+        $totalBed = $room->stock;
+        $updateStockRoom = $room;
+        $updateStockRoom->update(['stock' => (int) $totalBed - 1]);
 
 
         $check = Booking::where('room_id', $input['room_id'])->where('user_id', $input['user_id'])->first();

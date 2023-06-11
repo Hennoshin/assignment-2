@@ -6,6 +6,7 @@ use App\Constants\FileConst;
 use App\Http\Modules\BaseWebCrud;
 use App\Http\Requests\Web\Room\RoomRequest;
 use App\Models\Asramas;
+use App\Models\Booking;
 use App\Models\Fasilitas;
 use App\Models\Room;
 use App\Models\RoomFasilitas;
@@ -38,11 +39,15 @@ class RoomController extends BaseWebCrud
 
     public function __prepareDataStore($data) 
     {
-        $data['room_type_id'] = RoomType::getId($data['room_type_id']);
+        $roomType = RoomTYpe::getFirst($data['room_type_id']);
+        $data['room_type_id'] = $roomType->id;
         $data['asrama_id'] = Asramas::getId($data['asrama_id']);
         $data['perhari'] = $this->toInt($data['perhari']);
         $data['perbulan'] = $this->toInt($data['perbulan']);
         $data['persemester'] = $this->toInt($data['persemester']);
+        
+        // $data['stock'] = $roomType->total_bed != null ?  $roomType->total_bed : 1;
+
         return $data;
     }
     public function __successStore()
@@ -102,6 +107,13 @@ class RoomController extends BaseWebCrud
         //         $value->saveFile($this->row->image(), ['slug' =>  FileConst::IMAGE_ROOM_SLUG]);
         //     }
         // }
+
+        $booking = $this->row->Bookings()->where('status', '!=', \App\Models\Booking::FAILED)->count();
+        if($booking == 0) {
+            $update = $this->row;
+            $totalBed = $update->RoomType->total_bed;
+            $update->update(['stock' => $totalBed]);
+        }
     }
 
     public function __prepareDataUpdate($data)

@@ -121,6 +121,7 @@
                                             <div class="col-4">
                                                 <h3 class="card-title">{{ $row->title }}</h3>
                                                 <h4 class="card-title">Fasilitas</h4>
+                                                
                                                 <ul class="list-unstyled mt-2">
                                                     @forelse ($row->RoomFasilitas as $item)
                                                         <li>
@@ -167,14 +168,16 @@
                                                                 <h5 class="m-0 me-2">Rp. {{ number_format($row->perhari) }} / {{ ' Hari' }}</h5>
                                                                 <h5 class="m-0 me-2">Rp. {{ number_format($row->perbulan) }} / {{ ' Bulan' }}</h5>
                                                                 <h5 class="m-0 me-2">Rp. {{ number_format($row->persemester) }} / {{ ' Semester' }}</h5>
-                                                                @if ($row->Booking != null)
+                                                                @if ($row->stock == 0)
                                                                     <small class="text-muted">Stok Tidak Tersedia</small>
                                                                 @else   
                                                                     <small class="text-muted">Stok Kamar Tersedia</small>
+                                                                    <br>
+                                                                    <small class="text-muted">{{ $row->stock == 0 ? 'Kamar Tidak Tersedia' : $row->stock.' Bed Tersedia ' }}</small>
                                                                 @endif
                                                             </div>
                                                             <div class="col-6">
-                                                                @if ($row->Booking == null)
+                                                                @if ($row->stock == 0)
                                                                 <button @if (!auth()->user()->hasRole(\App\Constants\RoleConst::STUDENT))
                                                                     disabled
                                                                 @endif type="submit" class="btn btn-success">Booking Sekarang</button>

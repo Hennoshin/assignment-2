@@ -96,6 +96,9 @@ class PesananController extends BaseWebCrud
     public function rejected($uuid)
     {
         $this->row = $this->model::where('uuid', $uuid)->firstOrFail();
+
+        $room = $this->row->Room;
+        $room->update(['stock' => (int) $room->stock + 1]);
         $update = $this->row->update(['status' => 0]);
         $update = $this->row->image()->delete();
         $updatePayment = $this->row->Payment()->delete();
@@ -110,5 +113,11 @@ class PesananController extends BaseWebCrud
         } else {
             return view($this->viewPath . '.list', $data);
         }
+    }
+
+    public function __beforeDestroy()
+    {
+        $room = $this->row->Room;
+        $room->update(['stock' => (int) $room->stock + 1]);
     }
 }

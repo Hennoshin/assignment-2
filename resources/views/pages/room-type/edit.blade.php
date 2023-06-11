@@ -49,6 +49,21 @@
                             'disable' => false,
                             'multiple' => true,
                         ])
+
+                        @include('components.form.number', [
+                            'class_group' => 'mb-3',
+                            'field_name' => 'total_bed',
+                            'label' => 'Total Bed',
+                            'value' => old('total_bed', $row->total_bed),
+                            'placeholder' => 'Total Bed',
+                            'type' => 'text',
+                            'show' => true,
+                            'disable' => false,
+                            'min' => 0,
+                            'max' => 99999999999,
+                            'accept' => 'disable-minus',
+                            'format' => null
+                        ])
                     </div>
                 </div>
                 <div class="form-group">
