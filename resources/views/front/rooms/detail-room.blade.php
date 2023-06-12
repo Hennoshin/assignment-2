@@ -177,7 +177,7 @@
                                                                 @endif
                                                             </div>
                                                             <div class="col-6">
-                                                                @if ($row->stock == 0)
+                                                                @if ($row->stock != 0)
                                                                 <button @if (!auth()->user()->hasRole(\App\Constants\RoleConst::STUDENT))
                                                                     disabled
                                                                 @endif type="submit" class="btn btn-success">Booking Sekarang</button>
