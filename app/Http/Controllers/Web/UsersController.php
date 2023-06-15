@@ -50,6 +50,7 @@ class UsersController extends BaseWebCrud
 
             $data['asrama_id'] = Asramas::getId($data['asrama_id']);
         }
+        
         return $data;
     }
 

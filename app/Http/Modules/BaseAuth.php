@@ -53,10 +53,17 @@ class BaseAuth extends Controller
                 return $ress;
             }
 
+            if($this->user->hasRole(\App\Constants\RoleConst::STAFF) AND $this->user->asrama == null) {
+                return $this->__errorLogin();
+            }
+
             Auth::login($this->user);
+            
             if($this->user->hasRole(\App\Constants\RoleConst::STUDENT)) {
                 return redirect('/landing');
             }
+
+           
             return $this->__successLogin();
         }
 

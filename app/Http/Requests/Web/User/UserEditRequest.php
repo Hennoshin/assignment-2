@@ -35,6 +35,7 @@ class UserEditRequest extends FormRequest
             'nik' => 'nullable',
             'fakultas' => 'nullable',
             'gender' => 'required',
+            'asrama_id' => 'nullable',
         ];
     }
 }
