@@ -20,7 +20,9 @@ class LandingPageController extends BaseWebCrud
     public function landingPages(Request $request)
     {
         $asrama = Asramas::get();
-        $room = Room::limit(4)->inRandomOrder()->get();
+        $room = Room::with(['Asrama'])->whereHas('Asrama', function($q) {
+            return $q->whereNull('deleted_at');
+        })->limit(4)->inRandomOrder()->get();
         return view($this->viewPath . '.landing', [
             'asrama' => $asrama,
             'room' => $room

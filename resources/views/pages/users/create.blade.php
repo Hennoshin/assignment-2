@@ -64,7 +64,7 @@
                             'label' => 'Asrama',
                             'value' => 0,
                             'placeholder' => '',
-                            'options' => \DB::Table('asrama')->get(),
+                            'options' => \DB::Table('asrama')->whereNull('deleted_at')->get(),
                             'key_option_value' => 'uuid',
                             'key_option_label' => 'title',
                             'show' => true,
