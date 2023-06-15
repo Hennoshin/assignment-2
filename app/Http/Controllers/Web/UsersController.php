@@ -46,6 +46,10 @@ class UsersController extends BaseWebCrud
         } else {
             unset($data['password']);
         }
+        if(isset( $data['asrama_id']) and $data['asrama_id'] != null){
+
+            $data['asrama_id'] = Asramas::getId($data['asrama_id']);
+        }
         return $data;
     }
 
