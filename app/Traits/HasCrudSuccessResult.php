@@ -6,7 +6,8 @@ trait HasCrudSuccessResult
 {
     public function __successList($query)
     {
-        return $this->resource::collection($query)->additional($this->__additionalCollection());
+        // return $this->resource::collection($query)->additional($this->__additionalCollection());
+        return $query;
     }
 
     public function __successShow()

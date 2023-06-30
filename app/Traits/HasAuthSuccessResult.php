@@ -10,7 +10,7 @@ trait HasAuthSuccessResult
         if(request('_token')) {
             return redirect(route('web.dashboard'));
         }
-        return ['token' => $this->user->createToken('personal')->accessToken];
+        return ['token' => $this->user->createToken('personal')->plainTextToken, "data" => $this->user];
     }
 
 
